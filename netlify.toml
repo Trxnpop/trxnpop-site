@@ -1,0 +1,5 @@
+# The live site is the site/ folder. No build step: run scripts/build.py
+# locally before committing whenever posts change.
+[build]
+  publish = "site"
+  command = ""
