@@ -589,7 +589,9 @@ section[id], .view { scroll-margin-top: 72px; }
         </div>
       </div>
 
-      <form id="contact-form" novalidate>
+      <form id="contact-form" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <label>Name<input id="f-name" name="name" autocomplete="name" required></label>
         <label>Company<input id="f-company" name="company" autocomplete="organization"></label>
         <label>Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
@@ -786,27 +788,40 @@ section[id], .view { scroll-margin-top: 72px; }
   document.querySelectorAll(".calc input[type=range]").forEach((el) => el.addEventListener("input", calc));
   calc();
 
-  // Contact form: no server here, so compose an email the visitor can send.
-  const form = $("contact-form"), msg = $("form-msg");
-  form.addEventListener("submit", (e) => {
+  // Contact form: submits to Netlify Forms. If that isn't available, ask the visitor to email instead.
+  const form = $("contact-form"), msg = $("form-msg"), sendBtn = form.querySelector('button[type="submit"]');
+  function note(html, bad) {
+    msg.hidden = false;
+    msg.style.background = bad ? "color-mix(in srgb, var(--pop) 14%, transparent)" : "";
+    msg.innerHTML = html;
+  }
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = $("f-name").value.trim(), email = $("f-email").value.trim();
     if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
-      msg.hidden = false;
-      msg.style.background = "color-mix(in srgb, var(--pop) 14%, transparent)";
-      msg.textContent = "Please add your name and a valid email address so we can reply.";
+      note("Please add your name and a valid email address so we can reply.", true);
       return;
     }
-    const body = `Name: ${name}\nCompany: ${$("f-company").value}\nEmail: ${email}\nI am a: ${$("f-type").value}\n\n${$("f-msg").value}`;
-    const href = "mailto:hello@trxnpop.com?subject=" + encodeURIComponent("Statement review request from " + name) + "&body=" + encodeURIComponent(body);
-    msg.hidden = false;
-    msg.style.background = "";
-    msg.innerHTML = 'Your email is ready. If it didn\'t open, send it to <strong>hello@trxnpop.com</strong>. <button type="button" id="copy-req">Copy request</button>';
-    $("copy-req").addEventListener("click", async () => {
-      try { await navigator.clipboard.writeText(body); $("copy-req").textContent = "Copied"; }
-      catch { $("copy-req").textContent = "Copy failed"; }
-    });
-    window.location.href = href;
+    sendBtn.disabled = true; sendBtn.textContent = "Sending…";
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(form)).toString()
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      form.reset();
+      note("<strong>Thanks, " + name.replace(/[<>&"]/g, "") + ".</strong> Your request is in. We'll get back to you within one business day.");
+    } catch (err) {
+      const body = `Name: ${name}\nCompany: ${$("f-company").value}\nEmail: ${email}\nI am a: ${$("f-type").value}\n\n${$("f-msg").value}`;
+      note('We couldn\'t send that just now. Please email it to <strong>hello@trxnpop.com</strong>. <button type="button" id="copy-req">Copy request</button>', true);
+      $("copy-req").addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(body); $("copy-req").textContent = "Copied"; }
+        catch { $("copy-req").textContent = "Copy failed"; }
+      });
+    } finally {
+      sendBtn.disabled = false; sendBtn.textContent = "Send my request";
+    }
   });
 })();
 </script>
