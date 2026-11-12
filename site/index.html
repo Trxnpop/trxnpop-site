@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TrxnPop</title>
+<title>TrxnPop | Payments and business development</title>
+<link rel="canonical" href="https://trxnpop.com/">
 <meta name="description" content="TrxnPop is a payments and business development firm. We help Vertical SaaS companies, merchants and sales agents earn more from payments, cut processing costs and bring in new business.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -303,7 +304,7 @@ section[id], .view { scroll-margin-top: 72px; }
       <a href="#who">Who we help</a>
       <a href="#estimate">Estimate</a>
       <a href="#how">How it works</a>
-      <a href="#blog">Blog</a>
+      <a href="/blog/">Blog</a>
       <a class="btn" href="#contact">Book a call</a>
     </nav>
   </div>
@@ -552,8 +553,27 @@ section[id], .view { scroll-margin-top: 72px; }
         <h2 id="insights-title">From The Statement.</h2>
         <p>Plain-English notes on payments, pricing and growth. No jargon you'll need a glossary for.</p>
       </div>
-      <div class="posts reveal" id="home-posts"></div>
-      <div class="blog-foot"><a class="btn ghost" href="#blog">All posts <span aria-hidden="true">→</span></a></div>
+      <div class="posts reveal" id="home-posts"><!-- HOME-POSTS:START -->
+      <a class="post-card" href="/blog/second-processor-vertical-saas/">
+      <div class="meta"><b>Vertical SaaS</b><span>Nov 12, 2026</span><span>5 min read</span></div>
+      <h3>Why vertical SaaS platforms lose merchants to processor shutdowns</h3>
+      <p>When your processor declines or drops a merchant, your software gets blamed. Here&#x27;s how a second approval path keeps those merchants on your platform.</p>
+      <span class="more">Read the post <span aria-hidden="true">→</span></span>
+    </a>
+      <a class="post-card" href="/blog/processor-closed-my-account/">
+      <div class="meta"><b>High-risk merchants</b><span>Nov 12, 2026</span><span>6 min read</span></div>
+      <h3>Processor closed your account? What to do next</h3>
+      <p>Stripe, Square or PayPal shut you down and froze your funds? Here&#x27;s what&#x27;s happening, what to do in the first 48 hours, and how to get processing again without making it worse.</p>
+      <span class="more">Read the post <span aria-hidden="true">→</span></span>
+    </a>
+      <a class="post-card" href="/blog/cash-discount-vs-surcharging/">
+      <div class="meta"><b>Pricing</b><span>Nov 12, 2026</span><span>6 min read</span></div>
+      <h3>Cash discount, dual pricing and surcharging</h3>
+      <p>Three ways to pass card fees on to customers. They sound alike, but the rules are different, and mixing them up can get you in trouble.</p>
+      <span class="more">Read the post <span aria-hidden="true">→</span></span>
+    </a>
+      <!-- HOME-POSTS:END --></div>
+      <div class="blog-foot"><a class="btn ghost" href="/blog/">All posts <span aria-hidden="true">→</span></a></div>
     </div>
   </section>
 
@@ -590,284 +610,6 @@ section[id], .view { scroll-margin-top: 72px; }
   </section>
 </main>
 
-<div class="view" id="blog" data-title="The Statement" hidden>
-  <div class="wrap">
-    <a class="back" href="#top">← Back to home</a>
-    <div class="blog-head">
-      <p class="eyebrow">The TrxnPop blog</p>
-      <h1>The <em>Statement</em>.</h1>
-      <p>Plain-English notes on payments, pricing and growth for merchants, SaaS companies and the people who sell to them.</p>
-    </div>
-    <div class="posts" id="all-posts"></div>
-  </div>
-</div>
-
-<article class="view post" id="second-processor-vertical-saas" data-title="Why vertical SaaS platforms lose merchants to processor shutdowns" data-tag="Vertical SaaS" data-date="2026-11-12" data-read="5 min" data-excerpt="When your processor declines or drops a merchant, your software gets blamed. Here's how a second approval path keeps those merchants on your platform." hidden>
-  <div class="wrap">
-    <a class="back" href="#blog">← All posts</a>
-    <header class="post-head">
-      <div class="meta"><b>Vertical SaaS</b><span>Nov 12, 2026</span><span>5 min read</span></div>
-      <h1>Why vertical SaaS platforms lose merchants to processor shutdowns</h1>
-      <p class="dek">When your processor declines or drops a merchant, your software gets blamed. Here's how a second approval path keeps those merchants on your platform, without ripping out what you have.</p>
-      <p class="byline">By <b>Aaron Puttmann</b>, TrxnPop</p>
-    </header>
-    <div class="prose">
-      <p>A merchant signs up for your platform. They love the scheduling, the CRM, the reporting. Then they try to turn on payments and get declined in underwriting. Or they process for a year, have one rough month of chargebacks, and get a two-line email: account closed, funds held.</p>
-      <p>The merchant doesn't call the processor to complain. They call you. And if you can't fix it, they find software that can.</p>
-      <p>That's the hidden cost of having only one way to get a merchant approved. It isn't a technical risk. It's a churn risk.</p>
-
-      <h2>Why it happens more in some verticals</h2>
-      <p>Every processor has a risk appetite. Some industries sit outside it for most mainstream providers because of chargeback history, regulatory attention, future-delivery risk or reputation concerns. Common examples:</p>
-      <ul>
-        <li>Bail bonds</li>
-        <li>Firearms and FFL dealers</li>
-        <li>Credit repair and debt services</li>
-        <li>Travel and ticketing</li>
-        <li>Tattoo and some personal services</li>
-        <li>Subscriptions and memberships with high dispute rates</li>
-      </ul>
-      <p>If your software serves any of these, your best merchants (high volume, loyal, low churn) can also be the ones your processor is least comfortable with.</p>
-
-      <h2>The usual fix doesn't work</h2>
-      <p>Most payments partners pitch the same thing: rip out your current processor and switch to us. For a software team, that's a big project. You rebuild integrations, re-board merchants and take on migration risk, all for the merchants who are already doing fine. The real problem, the merchants being declined or dropped, stays unsolved.</p>
-
-      <h2>A better model: a second approval path</h2>
-      <p>Instead of replacing your processor, add a second one behind it, built for the merchants your first processor won't take or won't keep.</p>
-      <ol>
-        <li><strong>Your current processor stays primary.</strong> Nothing changes for merchants who are approved and happy.</li>
-        <li><strong>Declined or flagged merchants get a second option.</strong> Instead of losing them, you route them to a provider comfortable with their industry.</li>
-        <li><strong>Terminated merchants have somewhere to go.</strong> You keep the customer and the subscription.</li>
-        <li><strong>You earn revenue share on the added volume.</strong> Volume you were losing becomes income.</li>
-      </ol>
-      <p>It's the same logic as running your app on more than one server. You don't plan for things to fail. You just make sure one failure doesn't take your customers with it.</p>
-
-      <h2>What it's worth</h2>
-      <p>Say your platform has 300 merchants, and 10% of them are in an industry that struggles with mainstream processors. If those 30 merchants process an average of $40,000 a month, that's $1.2 million a month in volume at risk.</p>
-      <div class="calc-box">30 merchants × $40,000 a month = $1,200,000 a month at risk<br><br>Keep half of them = $600,000 a month you still earn on</div>
-      <p>Your numbers will be different. The point is that this volume usually isn't counted anywhere, because it leaves quietly.</p>
-
-      <h2>Questions to ask your team</h2>
-      <ul>
-        <li>How many merchants did we lose this year because of a payments problem?</li>
-        <li>What happens today when our processor declines a new merchant?</li>
-        <li>Are our highest-volume merchants also our highest-risk merchants?</li>
-        <li>Do we earn anything on payments, or do merchants bring their own Stripe or Square?</li>
-      </ul>
-      <p>If any of those answers make you uncomfortable, that's where the revenue is hiding.</p>
-      <p class="note">Figures above are an illustrative example, not a forecast. Approval depends on each merchant's business and the provider's underwriting.</p>
-    </div>
-    <div class="post-cta">
-      <h2>Losing merchants to payments?</h2>
-      <p>We help software platforms add a second approval path alongside the processor they already have, plus revenue share on the volume. No rip and replace.</p>
-      <a class="btn pop" href="#contact">Book a 20-minute call</a>
-    </div>
-  </div>
-</article>
-
-<article class="view post" id="processor-closed-my-account" data-title="Processor closed your account? What to do next" data-tag="High-risk merchants" data-date="2026-11-12" data-read="6 min" data-excerpt="Stripe, Square or PayPal shut you down and froze your funds? Here's what's happening, what to do in the first 48 hours, and how to get processing again without making it worse." hidden>
-  <div class="wrap">
-    <a class="back" href="#blog">← All posts</a>
-    <header class="post-head">
-      <div class="meta"><b>High-risk merchants</b><span>Nov 12, 2026</span><span>6 min read</span></div>
-      <h1>Processor closed your account? What to do next</h1>
-      <p class="dek">Stripe, Square or PayPal shut you down and froze your funds? Here's what's happening, what to do in the first 48 hours, and how to get processing again without making it worse.</p>
-      <p class="byline">By <b>Aaron Puttmann</b>, TrxnPop</p>
-    </header>
-    <div class="prose">
-      <p>"Your account has been closed." Maybe with a reason, usually without one. Your money is on hold, and customers are trying to pay you right now.</p>
-      <p>First: you're not alone, and it's usually fixable. Processors close accounts every day, especially in industries they consider higher risk. What you do in the next few days matters a lot.</p>
-
-      <h2>Why processors shut accounts down</h2>
-      <ul>
-        <li><strong>Chargebacks.</strong> Card networks start watching once disputes approach roughly 1% of transactions, and processors often act before that.</li>
-        <li><strong>Sudden volume spikes.</strong> A month that's three times your normal looks like fraud risk, even when it's just a great month.</li>
-        <li><strong>Your industry.</strong> Many mainstream processors restrict bail bonds, firearms, credit repair, CBD, travel and some subscriptions. Some accounts get approved automatically and only reviewed later.</li>
-        <li><strong>Unclear business details.</strong> A website without a refund policy, a billing descriptor customers don't recognize, or products that weren't on the original application.</li>
-      </ul>
-
-      <h2>What to do in the first 48 hours</h2>
-      <ol>
-        <li><strong>Read the closure email carefully.</strong> Note the stated reason, how long funds will be held and any appeal option.</li>
-        <li><strong>Download everything.</strong> Pull your statements, transaction history and chargeback records while you still have access. Any new processor will ask for the last three to six months.</li>
-        <li><strong>Ask for specifics, politely.</strong> Request the reason for closure and the release date for held funds in writing.</li>
-        <li><strong>Give customers another way to pay.</strong> Invoices, ACH or a backup method keep revenue from stopping completely.</li>
-        <li><strong>Fix whatever triggered it.</strong> If it was chargebacks, find where they came from. If it was policies, update your website now. Underwriters will look.</li>
-      </ol>
-
-      <h2>What not to do</h2>
-      <ul>
-        <li><strong>Don't open a new account under a different name or entity to get around the closure.</strong> It's the fastest way onto the MATCH list (also called TMF), a shared industry database of terminated merchants that can make processing much harder for years.</li>
-        <li><strong>Don't fight every chargeback with an angry reply.</strong> Respond with evidence: receipts, signed agreements, delivery confirmation and messages.</li>
-        <li><strong>Don't sign the first offer you get.</strong> Some high-risk providers charge steep reserves and long contracts. Read the terms.</li>
-      </ul>
-
-      <h2>Getting processing again</h2>
-      <p>The right next step is a processor that's set up for your industry and approves you knowingly from the start, so you aren't reviewed out again in six months.</p>
-      <p>Expect a real application: statements, ID, business documents and a description of how you sell. You might see a rolling reserve at first. That's normal in high-risk processing, and a good provider will explain how and when it comes down.</p>
-      <p>If you run your business on industry software (bail management, FFL compliance, booking platforms and so on), ask whether it supports more than one processor. Many do, which makes switching much easier.</p>
-      <p class="note">This post is general information about how card processing works, not legal or financial advice. Every business and processor agreement is different.</p>
-    </div>
-    <div class="post-cta">
-      <h2>Need processing that sticks?</h2>
-      <p>Send us your recent statements. We'll tell you honestly what your options look like and what's likely driving the risk flags.</p>
-      <a class="btn pop" href="#contact">Get a free statement review</a>
-    </div>
-  </div>
-</article>
-
-<article class="view post" id="effective-rate" data-title="How to find your real effective rate" data-tag="Merchants" data-date="2026-11-12" data-read="5 min" data-excerpt="It's the one number that tells you what you're really paying to take cards. Here's how to calculate it in two minutes, and what a high one usually means." hidden>
-  <div class="wrap">
-    <a class="back" href="#blog">← All posts</a>
-    <header class="post-head">
-      <div class="meta"><b>Merchants</b><span>Nov 12, 2026</span><span>5 min read</span></div>
-      <h1>How to find your real effective rate</h1>
-      <p class="dek">It's the one number that tells you what you're really paying to take cards. Here's how to calculate it in two minutes, and what a high one usually means.</p>
-      <p class="byline">By <b>Aaron Puttmann</b>, TrxnPop</p>
-    </header>
-    <div class="prose">
-      <p>Ask a business owner what they pay to process cards and you'll usually hear a single rate: "2.6%" or "1.9% plus a dime." That's the rate the sales rep quoted. It's almost never what they actually pay.</p>
-      <p>The number that matters is your <strong>effective rate</strong>: everything you paid in processing fees last month, divided by everything you processed. It includes the quoted rate, but also the fees that never came up in the pitch.</p>
-
-      <h2>The two-minute calculation</h2>
-      <p>Grab last month's processing statement and find two numbers:</p>
-      <ol>
-        <li><strong>Total volume:</strong> the dollar amount of all card sales processed. It's often labeled "total sales," "gross volume" or "amount submitted."</li>
-        <li><strong>Total fees:</strong> everything the processor charged you. Look for "total fees," "total charges" or "fees deducted." If fees are taken out daily, add up the month.</li>
-      </ol>
-      <p>Then divide.</p>
-      <div class="calc-box">Total fees ÷ Total volume = Effective rate<br><br>$7,750 ÷ $250,000 = 0.031 = 3.10%</div>
-      <p>Use a full month, and ideally check two or three months. One month can be skewed by a big refund, an annual fee or a chargeback.</p>
-
-      <h2>So is my rate good or bad?</h2>
-      <p>It depends on how you take cards. Keyed-in and online payments cost more than tapped or dipped cards, premium rewards cards cost more than debit, and higher-risk industries pay more. A retailer taking mostly debit in person should expect a much lower rate than an online business taking mostly rewards cards.</p>
-      <p>What matters more is the <strong>gap</strong> between your effective rate and what your card mix actually costs. Interchange, the fee set by Visa, Mastercard and the issuing banks, is the floor nobody can negotiate. Everything above it is your processor's markup and fees, and that part is negotiable.</p>
-
-      <h2>Why it's higher than you were quoted</h2>
-      <p>A big gap usually comes from a few repeat offenders:</p>
-      <ul>
-        <li><strong>Tiered pricing.</strong> Transactions get sorted into "qualified," "mid-qualified" and "non-qualified" buckets. The quoted rate only applies to the cheapest bucket, and many cards land in the expensive ones.</li>
-        <li><strong>Junk fees.</strong> Statement fees, "regulatory" or "compliance" fees, annual fees, PCI fees and monthly minimums. Each is small. Together they add up.</li>
-        <li><strong>Rate creep.</strong> Small increases buried in a notice on page four of a statement, a year or two after you signed.</li>
-        <li><strong>Markup on the card brand fees.</strong> Some processors add their own margin on top of fees that should pass through at cost.</li>
-      </ul>
-
-      <h2>What to do about it</h2>
-      <p>Ask your processor to move you to <strong>interchange-plus</strong> pricing. Interchange passes through at cost, and you pay a fixed, visible markup on top. It's the easiest way to see exactly what you're paying and why.</p>
-      <p>If you'd rather take card fees off your books almost entirely, a compliant cash discount or dual pricing program is another option. We cover how those differ from surcharging in <a href="#cash-discount-vs-surcharging">this post</a>.</p>
-      <p class="note">This post is general information about how card processing pricing works, not financial or legal advice. Every business's card mix and contract are different.</p>
-    </div>
-    <div class="post-cta">
-      <h2>Want us to read yours?</h2>
-      <p>Send us a recent statement and we'll tell you your real effective rate and where the extra cost is coming from. No charge.</p>
-      <a class="btn pop" href="#contact">Get a free statement review</a>
-    </div>
-  </div>
-</article>
-
-<article class="view post" id="cash-discount-vs-surcharging" data-title="Cash discount, dual pricing and surcharging" data-tag="Pricing" data-date="2026-11-12" data-read="6 min" data-excerpt="Three ways to pass card fees on to customers. They sound alike, but the rules are different, and mixing them up can get you in trouble." hidden>
-  <div class="wrap">
-    <a class="back" href="#blog">← All posts</a>
-    <header class="post-head">
-      <div class="meta"><b>Pricing</b><span>Nov 12, 2026</span><span>6 min read</span></div>
-      <h1>Cash discount, dual pricing and surcharging: what's the difference?</h1>
-      <p class="dek">Three ways to pass card fees on to customers. They sound alike, but the rules are different, and mixing them up can get you in trouble.</p>
-      <p class="byline">By <b>Aaron Puttmann</b>, TrxnPop</p>
-    </header>
-    <div class="prose">
-      <p>More businesses are asking the same question: why am I paying 3% on every card sale when my customers could cover it? There are three common ways to do that. All of them can cut your processing cost to near zero, but each one works differently and has its own rules.</p>
-
-      <h2>Surcharging</h2>
-      <p>A surcharge is a fee added on top of your normal price when a customer pays with a <strong>credit card</strong>. Your price is $100; pay by credit card and it's $103.</p>
-      <ul>
-        <li>It applies to credit cards only. Card brand rules don't allow surcharges on debit or prepaid cards, even if the customer runs a debit card as credit.</li>
-        <li>The card brands cap how much you can charge, and you can't charge more than your actual cost of acceptance.</li>
-        <li>You generally have to notify your processor and the card brands before you start, post signs at the entrance and checkout, and show the surcharge as a separate line on the receipt.</li>
-        <li>Some states restrict or ban surcharging. The rules change, so check yours before you start.</li>
-      </ul>
-
-      <h2>Cash discount</h2>
-      <p>With a cash discount, your posted price already includes the cost of card processing, and customers who pay with cash get a discount. The sticker says $103; pay cash and it's $100.</p>
-      <ul>
-        <li>It's framed as a discount for cash, not a fee for cards, so it applies the same way to credit and debit.</li>
-        <li>Signage and receipts need to make the cash price and the card price clear.</li>
-        <li>The price you post has to be the card price. Advertising the lower price and then adding a "fee" at checkout turns it into a surcharge, with surcharge rules.</li>
-      </ul>
-
-      <h2>Dual pricing</h2>
-      <p>Dual pricing shows <strong>both prices</strong> side by side: a cash price and a card price on the menu, the shelf tag and the register screen. The customer sees both before they choose how to pay. It's common in restaurants, gas stations and auto shops, and many customers find it the most transparent of the three.</p>
-
-      <h2>Side by side</h2>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th></th><th>Surcharge</th><th>Cash discount</th><th>Dual pricing</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Posted price</strong></td><td>Cash price</td><td>Card price</td><td>Both</td></tr>
-            <tr><td><strong>Debit cards</strong></td><td>Can't be surcharged</td><td>Pay the card price</td><td>Pay the card price</td></tr>
-            <tr><td><strong>How it's framed</strong></td><td>A fee for using credit</td><td>A discount for paying cash</td><td>Two prices, customer chooses</td></tr>
-            <tr><td><strong>Main risk</strong></td><td>Card brand and state rules</td><td>Signage and price display</td><td>Keeping both prices accurate</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h2>Which one is right for you?</h2>
-      <p>It comes down to your customers, your state and how you sell. A business with lots of debit card customers often gets more from a cash discount or dual pricing than from surcharging, since debit can't be surcharged. A B2B company taking large invoice payments by credit card may prefer surcharging. And if you'd rather not change your prices at all, moving to interchange-plus pricing can still cut your costs.</p>
-      <p>Whichever you choose, the setup matters: the right terminal settings, signs, receipts and processor approval. Done right, it's routine. Done wrong, it can lead to fines or an unhappy processor.</p>
-      <p class="note">This post is general information, not legal advice. Card brand rules and state laws change; confirm the current rules for your state and business before launching a program.</p>
-    </div>
-    <div class="post-cta">
-      <h2>See what it would save you.</h2>
-      <p>Our calculator compares traditional processing with a cash discount program, using your own numbers.</p>
-      <a class="btn pop" href="#estimate">Run the numbers</a>
-    </div>
-  </div>
-</article>
-
-<article class="view post" id="saas-payments-revenue" data-title="Your SaaS is leaving payments revenue on the table" data-tag="Vertical SaaS" data-date="2026-11-12" data-read="6 min" data-excerpt="Your customers already process cards every day. Here's how software companies turn that volume into revenue, and how to pick the right model." hidden>
-  <div class="wrap">
-    <a class="back" href="#blog">← All posts</a>
-    <header class="post-head">
-      <div class="meta"><b>Vertical SaaS</b><span>Nov 12, 2026</span><span>6 min read</span></div>
-      <h1>Your SaaS is leaving payments revenue on the table</h1>
-      <p class="dek">Your customers already process cards every day. Here's how software companies turn that volume into revenue, and how to pick the right model.</p>
-      <p class="byline">By <b>Aaron Puttmann</b>, TrxnPop</p>
-    </header>
-    <div class="prose">
-      <p>If you build software for salons, gyms, contractors, clinics or restaurants, your customers run their business inside your product. They book, invoice and check out there. Then they take payment through a processor that has nothing to do with you, and that processor keeps all of the revenue.</p>
-      <p>That's why so many vertical software companies now offer payments. Done well, it can become a meaningful revenue line that grows with your customers, without raising your subscription price.</p>
-
-      <h2>How the money works</h2>
-      <p>Payments revenue is usually measured in <strong>basis points</strong>: hundredths of a percent of the volume your customers process. 100 bps is 1%. The math is simple:</p>
-      <div class="calc-box">Customers × Average monthly volume × Adoption × Your share<br><br>400 × $40,000 × 40% × 0.40% = $25,600 a month</div>
-      <p>The two numbers you control most are <strong>adoption</strong>, how many of your customers use your payments, and your <strong>share</strong>, which depends on the model you choose and how well you negotiate it.</p>
-
-      <h2>Three common models</h2>
-      <ul>
-        <li><strong>Referral or revenue share partnership.</strong> You partner with a processor, refer your customers, and earn a share of the revenue. It's the fastest to launch and carries the least risk, but your share is smaller and the processor owns more of the experience.</li>
-        <li><strong>Payfac-as-a-service.</strong> A provider handles the licensing, underwriting and risk, while payments feel built into your product. You earn a larger share and control more of the experience, with more work on your side.</li>
-        <li><strong>Becoming a payment facilitator.</strong> You take on underwriting, risk and compliance yourself, and keep the most margin. It takes significant capital, people and time, so it usually only makes sense at large scale.</li>
-      </ul>
-
-      <h2>What drives adoption</h2>
-      <p>The best revenue share in the world is worth nothing if customers don't switch. The companies that win make payments the easiest option: built into checkout and invoicing, with funding that lands fast, clear pricing and a simple move from the customer's old processor. Many also give customers a cash discount option so their own card costs drop when they switch.</p>
-
-      <h2>Questions to ask before you sign</h2>
-      <ul>
-        <li>What's my share, and is it calculated on gross volume or on net revenue after costs?</li>
-        <li>Who owns the merchant relationship and the data if we part ways?</li>
-        <li>Who handles underwriting, chargebacks and support calls?</li>
-        <li>How long is the contract, and what does leaving cost?</li>
-        <li>Can my customers keep their current pricing, or move to interchange-plus or cash discount?</li>
-      </ul>
-      <p class="note">Figures above are an illustrative example, not a forecast. Your results depend on your customers, their volume and the partner you choose.</p>
-    </div>
-    <div class="post-cta">
-      <h2>Thinking about payments?</h2>
-      <p>We help software companies choose a model, pick the right partner and negotiate the revenue share.</p>
-      <a class="btn pop" href="#contact">Talk to us</a>
-    </div>
-  </div>
-</article>
-
 <footer>
   <div class="wrap">
     <a class="logo" href="#top" style="font-size:20px">trxn<span class="p">pop</span><span class="burst" aria-hidden="true"></span></a>
@@ -882,41 +624,15 @@ section[id], .view { scroll-margin-top: 72px; }
   const usd = (n) => n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   const pct = (n) => n.toFixed(2) + "%";
   // ---------- Blog: The Statement ----------
-  const home = document.getElementById("top");
-  const views = [...document.querySelectorAll(".view")];
-  const posts = views.filter((v) => v.classList.contains("post"));
-  const nice = (d) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  const card = (p) => `<a class="post-card" href="#${p.id}">
-      <div class="meta"><b>${p.dataset.tag}</b><span>${nice(p.dataset.date)}</span><span>${p.dataset.read} read</span></div>
-      <h3>${p.dataset.title}</h3>
-      <p>${p.dataset.excerpt}</p>
-      <span class="more">Read the post <span aria-hidden="true">→</span></span>
-    </a>`;
-  const sorted = posts.slice().sort((a, b) => b.dataset.date.localeCompare(a.dataset.date));
-  document.getElementById("all-posts").innerHTML = sorted.map(card).join("");
-  document.getElementById("home-posts").innerHTML = sorted.slice(0, 3).map(card).join("");
-
-  function route() {
+  // Posts now live at /blog/<slug>/. Send old #post links there.
+  const slugs = /* POST-SLUGS */["second-processor-vertical-saas", "processor-closed-my-account", "cash-discount-vs-surcharging", "effective-rate", "saas-payments-revenue"]/* /POST-SLUGS */;
+  function legacyRedirect() {
     const h = decodeURIComponent(location.hash.slice(1));
-    const v = h && document.getElementById(h);
-    if (v && v.classList.contains("view")) {
-      home.hidden = true;
-      views.forEach((x) => (x.hidden = x !== v));
-      document.title = v.dataset.title + " · TrxnPop";
-      window.scrollTo(0, 0);
-      return;
-    }
-    const wasHidden = home.hidden;
-    home.hidden = false;
-    views.forEach((x) => (x.hidden = true));
-    document.title = "TrxnPop";
-    if (wasHidden) {
-      const t = h && h !== "top" && document.getElementById(h);
-      requestAnimationFrame(() => (t ? t.scrollIntoView() : window.scrollTo(0, 0)));
-    }
+    if (h === "blog") location.replace("/blog/");
+    else if (slugs.includes(h)) location.replace("/blog/" + h + "/");
   }
-  window.addEventListener("hashchange", route);
-  route();
+  window.addEventListener("hashchange", legacyRedirect);
+  legacyRedirect();
 
   // ---------- Interactive effects ----------
   const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
