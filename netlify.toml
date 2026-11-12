@@ -1,5 +1,5 @@
-# The live site is the site/ folder. No build step: run scripts/build.py
-# locally before committing whenever posts change.
+# The live site is the site/ folder. There is no build step on Netlify:
+# run scripts/build.py locally before committing whenever posts change.
 [build]
   publish = "site"
-  command = ""
+  command = "echo 'Static site, no build step'"
