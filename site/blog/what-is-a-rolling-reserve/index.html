@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a Rolling Reserve? How It Works and How to Lower It | TrxnPop</title>
+<meta name="description" content="A rolling reserve holds back part of every deposit for months. Here&#x27;s how it works, what it does to cash flow, and how to get it lowered or removed.">
+<link rel="canonical" href="https://trxnpop.com/blog/what-is-a-rolling-reserve/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="TrxnPop">
+<meta property="og:title" content="What Is a Rolling Reserve? How It Works and How to Lower It | TrxnPop">
+<meta property="og:description" content="A rolling reserve holds back part of every deposit for months. Here&#x27;s how it works, what it does to cash flow, and how to get it lowered or removed.">
+<meta property="og:url" content="https://trxnpop.com/blog/what-is-a-rolling-reserve/">
+<meta name="twitter:card" content="summary">
+<meta property="article:published_time" content="2026-11-17">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What is a rolling reserve?", "description": "A rolling reserve holds back part of every deposit for months. Here's how it works, what it does to cash flow, and how to get it lowered or removed.", "datePublished": "2026-11-17", "dateModified": "2026-11-17", "author": {"@type": "Person", "name": "Aaron Puttmann"}, "publisher": {"@type": "Organization", "name": "TrxnPop", "url": "https://trxnpop.com/"}, "mainEntityOfPage": "https://trxnpop.com/blog/what-is-a-rolling-reserve/"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a merchant statement, re-printed in the merchant's favor. Left-aligned editorial columns, receipt-paper cards with mono figures. */
+  --paper: #F3F4F1;
+  --card: #FFFFFF;
+  --ink: #0F1724;
+  --muted: #5A6372;
+  --rule: #D9DCD6;
+  --pop: #FF4A1C;
+  --pop-ink: #FFFFFF;
+  --good: #11815A;
+  --pop-text: #C2380F;
+  --font-display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --shadow: 0 1px 0 rgba(15,23,36,.04), 0 18px 40px -22px rgba(15,23,36,.35);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1219; --card: #151C26; --ink: #EEF0EC; --muted: #9AA3B0;
+    --rule: #263040; --pop: #FF6A40; --pop-ink: #0D1219; --good: #3FCB92; --pop-text: #FF6A40;
+    --shadow: 0 18px 40px -22px rgba(0,0,0,.8);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1219; --card: #151C26; --ink: #EEF0EC; --muted: #9AA3B0;
+  --rule: #263040; --pop: #FF6A40; --pop-ink: #0D1219; --good: #3FCB92; --pop-text: #FF6A40;
+  --shadow: 0 18px 40px -22px rgba(0,0,0,.8);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+p { margin: 0; }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+:focus-visible { outline: 3px solid var(--pop); outline-offset: 3px; border-radius: 4px; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Nav */
+header.nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 66px; }
+.logo { font-family: var(--font-display); font-weight: 800; font-size: 26px; letter-spacing: -0.04em; text-decoration: none; display: inline-flex; align-items: baseline; }
+.logo .p { color: var(--pop); }
+.logo .burst { width: 9px; height: 9px; background: var(--pop); border-radius: 50%; margin-left: 3px; box-shadow: 0 0 0 4px color-mix(in srgb, var(--pop) 22%, transparent); }
+.nav nav { display: flex; gap: 26px; align-items: center; font-size: 15px; font-weight: 500; }
+.nav nav a { text-decoration: none; color: var(--muted); }
+.nav nav a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 15px/1 var(--font-body); padding: 14px 20px; border-radius: 999px; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); text-decoration: none; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.pop { background: var(--pop); border-color: var(--pop); color: var(--pop-ink); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.nav nav .btn { color: var(--paper); padding: 11px 16px; }
+@media (max-width: 760px) { .nav nav a:not(.btn) { display: none; } }
+
+/* Hero */
+.hero { padding: 72px 0 84px; border-bottom: 1px solid var(--rule); }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; gap: 10px; align-items: center; }
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--pop); }
+.hero h1 { font-size: clamp(48px, 7.4vw, 104px); font-weight: 800; margin: 22px 0 26px; letter-spacing: -0.045em; }
+.hero h1 em { font-style: normal; color: var(--pop); position: relative; white-space: nowrap; }
+.hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .06em; height: .09em; background: currentColor; border-radius: 2px; transform-origin: left; animation: underline .9s .5s cubic-bezier(.2,.8,.2,1) both; }
+.hero .lede { font-size: 20px; color: var(--muted); max-width: 34ch; }
+.hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+
+/* Receipt */
+.receipt { background: var(--card); box-shadow: var(--shadow); padding: 26px 26px 34px; font-family: var(--font-mono); font-size: 14px; position: relative; transform: rotate(1.2deg); animation: print 1s cubic-bezier(.2,.8,.2,1) both; }
+.receipt::after { content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 10px; background: radial-gradient(circle at 7px 0, transparent 7px, var(--card) 7.5px) 0 0 / 14px 10px repeat-x; }
+.receipt .rh { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; padding-bottom: 14px; border-bottom: 1px dashed var(--rule); }
+.receipt table { width: 100%; border-collapse: collapse; margin: 12px 0; font-variant-numeric: tabular-nums; }
+.receipt td { padding: 7px 0; }
+.receipt td:last-child { text-align: right; }
+.receipt .strike { text-decoration: line-through; color: var(--muted); margin-right: 8px; }
+.receipt .down { color: var(--good); font-weight: 500; }
+.receipt .total { border-top: 2px solid var(--ink); }
+.receipt .total td { padding-top: 14px; font-weight: 500; font-size: 16px; }
+.receipt .total td:last-child { color: var(--pop); }
+.receipt .stamp { position: absolute; right: 18px; bottom: 34px; border: 2px solid var(--pop); color: var(--pop); font-weight: 500; font-size: 12px; letter-spacing: .12em; padding: 6px 10px; transform: rotate(-9deg); border-radius: 4px; animation: stamp .45s 1.1s cubic-bezier(.3,1.6,.5,1) both; }
+.receipt .note { font-size: 11px; color: var(--muted); margin-top: 6px; }
+@keyframes print { from { clip-path: inset(0 0 100% 0); transform: rotate(1.2deg) translateY(-14px); } to { clip-path: inset(0 0 -20px 0); transform: rotate(1.2deg); } }
+@keyframes stamp { from { transform: rotate(-9deg) scale(1.8); opacity: .2; } to { transform: rotate(-9deg) scale(1); opacity: 1; } }
+@keyframes underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------- Interactive effects ---------- */
+/* Receipt tilt */
+.tilt { perspective: 900px; }
+.tilt-inner { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s cubic-bezier(.2,.8,.2,1); transform-style: preserve-3d; }
+.tilt.active .tilt-inner { transition: transform .08s linear; }
+.receipt .glare { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 0%), rgba(255,255,255,.55), transparent 55%); opacity: 0; transition: opacity .3s; mix-blend-mode: soft-light; }
+.tilt.active .receipt .glare { opacity: 1; }
+.receipt .stamp.again { animation: stamp .45s cubic-bezier(.3,1.6,.5,1) both; }
+.receipt { cursor: pointer; }
+
+/* Transaction tape */
+.tape { background: var(--ink); color: var(--paper); overflow: hidden; white-space: nowrap; border-bottom: 1px solid var(--rule); }
+.tape .track { display: inline-flex; gap: 40px; padding: 14px 40px 14px 0; animation: tape 40s linear infinite; font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.tape:hover .track { animation-play-state: paused; }
+.tape span { display: inline-flex; gap: 10px; align-items: center; opacity: .85; }
+.tape b { color: var(--pop); font-weight: 500; }
+.tape i { font-style: normal; color: var(--good); }
+@keyframes tape { to { transform: translateX(-50%); } }
+
+/* Pop burst */
+.burst-dot { position: fixed; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--pop); pointer-events: none; z-index: 100; animation: burst .7s cubic-bezier(.15,.8,.3,1) forwards; }
+.burst-dot.ink { background: var(--ink); width: 6px; height: 6px; }
+@keyframes burst { to { transform: translate(var(--dx), var(--dy)) scale(.2); opacity: 0; } }
+.logo:hover .burst { animation: pulse .6s cubic-bezier(.3,1.6,.5,1); }
+@keyframes pulse { 50% { transform: scale(1.6); } }
+
+/* Spotlight cards */
+.client, .lever { position: relative; }
+.client::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s; background: radial-gradient(260px circle at var(--x, 50%) var(--y, 50%), color-mix(in srgb, var(--pop) 16%, transparent), transparent 70%); }
+.client:hover::before { opacity: 1; }
+.client { transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+.client:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--pop) 45%, var(--rule)); }
+.client > * { position: relative; }
+
+/* Sliders with a filled track */
+.field input[type="range"] { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px; background: linear-gradient(to right, var(--pop) var(--fill, 50%), var(--rule) var(--fill, 50%)); outline-offset: 6px; cursor: pointer; }
+.field input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--card); border: 3px solid var(--pop); box-shadow: 0 2px 6px rgba(15,23,36,.25); transition: transform .15s; }
+.field input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--card); border: 3px solid var(--pop); }
+.field input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.2); }
+
+/* Result bump when a number changes */
+.opt .big.bump { animation: bump .35s ease; }
+@keyframes bump { 40% { transform: translateY(-3px); } }
+
+/* Scroll reveals, only where scroll timelines are supported */
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise-in linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  @keyframes rise-in { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: none; } }
+}
+
+@media (prefers-reduced-motion: reduce) { .tape .track { animation: none !important; }  *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+
+/* Sections */
+section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+.sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 52px; }
+.sec-head h2 { font-size: clamp(36px, 4.6vw, 60px); font-weight: 800; }
+.sec-head p { color: var(--muted); font-size: 18px; max-width: 46ch; }
+
+/* Three levers */
+.levers { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ink); }
+.lever { padding: 30px 30px 34px 0; display: grid; gap: 14px; align-content: start; }
+.lever + .lever { padding-left: 30px; border-left: 1px solid var(--rule); }
+.lever .num { font-family: var(--font-mono); font-size: 13px; color: var(--pop); }
+.lever h3 { font-size: 30px; font-weight: 600; }
+.lever p { color: var(--muted); }
+.lever ul { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 8px; font-size: 15px; }
+.lever li { display: flex; gap: 10px; }
+.lever li::before { content: "+"; font-family: var(--font-mono); color: var(--pop); }
+
+/* Who */
+.who { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.client { grid-column: span 2; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 26px; display: grid; gap: 12px; align-content: start; }
+.client.wide { grid-column: span 3; }
+.client .tag { justify-self: start; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; padding: 5px 9px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); }
+.client h3 { font-size: 24px; font-weight: 600; }
+.client p { color: var(--muted); font-size: 16px; }
+.client.feature { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.client.feature p, .client.feature .tag { color: color-mix(in srgb, var(--paper) 70%, transparent); border-color: color-mix(in srgb, var(--paper) 25%, transparent); }
+
+/* Calculator */
+.calc { display: grid; grid-template-columns: 1fr 1.05fr; background: var(--card); border: 1px solid var(--rule); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow); }
+.calc .inputs { padding: 34px; display: grid; gap: 22px; align-content: start; }
+.tabs { display: inline-flex; flex-wrap: wrap; padding: 4px; background: var(--paper); border-radius: 22px; border: 1px solid var(--rule); justify-self: start; }
+.tabs button { font: 600 14px/1 var(--font-body); border: 0; background: transparent; color: var(--muted); padding: 10px 16px; border-radius: 999px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.group { display: grid; gap: 18px; padding-top: 18px; border-top: 1px dashed var(--rule); }
+.group-label { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--pop); }
+.field { display: grid; gap: 8px; }
+.field label { font-size: 14px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; }
+.field label output { font-family: var(--font-mono); font-weight: 500; color: var(--pop); }
+.field input[type="range"] { width: 100%; accent-color: var(--pop); }
+.field .hint { font-size: 13px; color: var(--muted); }
+.calc .result { background: var(--ink); color: var(--paper); padding: 34px; display: grid; gap: 18px; align-content: center; }
+.result .label { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: color-mix(in srgb, var(--paper) 65%, transparent); }
+.options { display: grid; gap: 14px; }
+.opt { display: grid; gap: 10px; padding: 20px 22px; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--paper) 18%, transparent); }
+.opt.win { border-color: var(--pop); background: color-mix(in srgb, var(--pop) 10%, transparent); }
+.opt-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.opt-name { font-weight: 600; font-size: 16px; }
+.chip { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; background: var(--pop); color: var(--pop-ink); padding: 4px 8px; border-radius: 999px; }
+.result .big { font-family: var(--font-display); font-weight: 800; font-size: clamp(38px, 4.4vw, 56px); line-height: 1; color: var(--paper); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+.opt.win .big { color: var(--pop); }
+.result .row { display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-mono); font-size: 14px; padding-top: 10px; border-top: 1px dashed color-mix(in srgb, var(--paper) 22%, transparent); }
+.result .fine { font-size: 12px; color: color-mix(in srgb, var(--paper) 60%, transparent); }
+[hidden] { display: none !important; }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: s; }
+.step { padding: 24px 24px 0 0; border-top: 2px solid var(--rule); position: relative; display: grid; gap: 10px; align-content: start; }
+.step::before { content: ""; position: absolute; top: -2px; left: 0; width: 44px; height: 2px; background: var(--pop); }
+.step .num { font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.step h3 { font-size: 22px; font-weight: 600; }
+.step p { color: var(--muted); font-size: 15px; max-width: 30ch; }
+
+/* Contact */
+.contact .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+.contact h2 { font-size: clamp(40px, 5.4vw, 72px); font-weight: 800; }
+.contact .lede { color: var(--muted); font-size: 18px; margin-top: 20px; max-width: 38ch; }
+.contact .direct { margin-top: 30px; font-family: var(--font-mono); font-size: 15px; display: grid; gap: 6px; }
+.contact .direct a { color: var(--pop); }
+form { background: var(--card); border: 1px solid var(--rule); border-radius: 18px; padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+form .full { grid-column: 1 / -1; }
+form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+form input, form select, form textarea { font: 400 16px/1.4 var(--font-body); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; width: 100%; }
+form textarea { min-height: 120px; resize: vertical; }
+form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--pop); outline-offset: 1px; border-color: transparent; }
+.form-msg { grid-column: 1 / -1; font-size: 15px; padding: 14px 16px; border-radius: 10px; background: color-mix(in srgb, var(--good) 12%, transparent); color: var(--ink); }
+.form-msg button { margin-left: 8px; font: 600 13px var(--font-body); border: 1px solid var(--rule); background: var(--card); color: var(--ink); padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+
+footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- Blog: The Statement ---------- */
+.posts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.post-card { display: grid; gap: 14px; align-content: start; padding: 26px; background: var(--card); border: 1px solid var(--rule); border-radius: 14px; text-decoration: none; color: var(--ink); transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .3s; }
+.post-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--pop) 45%, var(--rule)); }
+.post-card .meta, .post-head .meta { display: flex; gap: 10px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.post-card .meta b, .post-head .meta b { color: var(--pop-text); font-weight: 500; }
+.post-card h3 { font-size: 26px; font-weight: 600; line-height: 1.12; }
+.post-card p { color: var(--muted); font-size: 16px; }
+.post-card .more { font-weight: 600; font-size: 15px; display: inline-flex; gap: 8px; align-items: center; }
+.post-card .more span { transition: transform .2s; }
+.post-card:hover .more span { transform: translateX(4px); }
+.blog-foot { margin-top: 32px; }
+.view { padding: 64px 0 96px; }
+.view .back { display: inline-flex; gap: 8px; font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); text-decoration: none; margin-bottom: 36px; }
+.view .back:hover { color: var(--ink); }
+.blog-head h1 { font-size: clamp(48px, 7vw, 96px); font-weight: 800; letter-spacing: -0.045em; margin: 18px 0 18px; }
+.blog-head h1 em { font-style: normal; color: var(--pop); }
+.blog-head p { color: var(--muted); font-size: 20px; max-width: 46ch; margin-bottom: 48px; }
+.post-head { max-width: 760px; }
+.post-head h1 { font-size: clamp(40px, 5.6vw, 72px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.02; margin: 18px 0 20px; }
+.post-head .dek { font-size: 21px; color: var(--muted); max-width: 52ch; }
+.post-head .byline { margin-top: 26px; padding-top: 18px; border-top: 1px dashed var(--rule); font-size: 15px; color: var(--muted); }
+.post-head .byline b { color: var(--ink); font-weight: 600; }
+.prose { max-width: 680px; margin-top: 48px; font-size: 18px; line-height: 1.75; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-top: 1.8em; }
+.prose ul, .prose ol { padding-left: 1.2em; }
+.prose li + li { margin-top: .45em; }
+.prose strong { font-weight: 600; }
+.prose a { color: var(--pop-text); }
+.prose .calc-box { font-family: var(--font-mono); font-size: 15px; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--pop); padding: 18px 20px; border-radius: 8px; font-variant-numeric: tabular-nums; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 16px; }
+.prose th, .prose td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.prose th { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 500; }
+.prose .table-wrap { overflow-x: auto; }
+.prose .note { font-size: 15px; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 18px; }
+.post-cta { max-width: 680px; margin-top: 56px; background: var(--ink); color: var(--paper); border-radius: 18px; padding: 32px; display: grid; gap: 14px; justify-items: start; }
+.post-cta h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+.post-cta p { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+@media (max-width: 960px) { .posts { grid-template-columns: 1fr; } }
+
+section[id], .view { scroll-margin-top: 72px; }
+/* Responsive */
+@media (max-width: 960px) {
+  .hero .wrap, .sec-head, .calc, .contact .wrap { grid-template-columns: 1fr; }
+  .receipt { max-width: 460px; }
+  .levers { grid-template-columns: 1fr; }
+  .lever, .lever + .lever { padding: 26px 0; border-left: 0; border-top: 1px solid var(--rule); }
+  .lever:first-child { border-top: 0; }
+  .who { grid-template-columns: 1fr 1fr; }
+  .client, .client.wide { grid-column: span 1; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+}
+@media (max-width: 560px) {
+  section { padding: 72px 0; }
+  .hero { padding: 48px 0 64px; }
+  .who, .steps, form { grid-template-columns: 1fr; }
+  .calc .inputs, .calc .result, form { padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="TrxnPop home">trxn<span class="p">pop</span><span class="burst" aria-hidden="true"></span></a>
+    <nav aria-label="Main">
+      <a href="/#what">What we do</a>
+      <a href="/#who">Who we help</a>
+      <a href="/#estimate">Estimate</a>
+      <a href="/#how">How it works</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn" href="/#contact">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="view post">
+  <div class="wrap">
+    <a class="back" href="/blog/">← All posts</a>
+    <header class="post-head">
+      <div class="meta"><b>High-risk merchants</b><span>Nov 17, 2026</span><span>5 min read</span></div>
+      <h1>What is a rolling reserve, and how do you get it lowered?</h1>
+      <p class="dek">A rolling reserve holds back part of every deposit for months. Here&#x27;s how it works, what it does to cash flow, and how to get it lowered or removed.</p>
+      <p class="byline">By <b>Aaron Puttmann</b>, TrxnPop</p>
+    </header>
+<div class="prose">
+      <p>You got approved for a merchant account. Then your first deposits came in a little light, and somewhere in the agreement you find the words "rolling reserve." The processor is keeping part of your money, and you want to know how much, for how long and how to make it stop.</p>
+      <p>Here's how reserves work, what one really does to your cash flow, and what tends to get one reduced.</p>
+
+      <h2>What a rolling reserve is</h2>
+      <p>A rolling reserve is a percentage of each day's card sales that your processor holds back for a set period, then releases to you. A common setup is something like 5% to 10% held for 90 to 180 days, though the exact terms vary a lot by processor, industry and history.</p>
+      <p>The money is still yours. It isn't a fee. It's a cushion the processor keeps in case your business generates chargebacks, refunds or losses it can't collect from you later.</p>
+      <p>Why would they need that? When a customer disputes a charge, the processor pays the card network first and then pulls the money back from you. If your account is empty, or you've closed up shop, the processor eats the loss. Card dispute windows commonly run around 120 days from the transaction, and longer for some situations like future-dated services, so processors want a cushion that lasts at least that long.</p>
+
+      <h2>How the math works</h2>
+      <p>Say you process $50,000 a month and your terms are a 10% rolling reserve held for 180 days.</p>
+      <div class="calc-box">$50,000 × 10% = $5,000 held each month<br><br>Months 1–6: $5,000 held, $0 released<br>Month 7 onward: $5,000 held, $5,000 released<br><br>Peak balance in reserve: $5,000 × 6 = $30,000</div>
+      <p>For the first six months, your deposits are 10% lighter than your sales. After that, the oldest money starts coming back each month at the same pace new money goes in, so your deposits return to roughly normal. But about $30,000 of your money stays parked with the processor for as long as the reserve is in place.</p>
+      <p>That first six months is where businesses get squeezed. If your margins are thin or you're growing fast, a 10% haircut on deposits can be the difference between making payroll comfortably and not.</p>
+
+      <h2>Other types of reserves</h2>
+      <ul>
+        <li><strong>Capped (or fixed) reserve.</strong> The processor holds a percentage of each deposit until the reserve hits a set dollar amount, then stops. The cap stays in place for the life of the account or until it's reviewed. This is often easier to live with, because once the cap is met your deposits go back to full.</li>
+        <li><strong>Upfront reserve.</strong> You deposit a lump sum, or the processor holds a chunk of your first deposits, before you process at full speed.</li>
+        <li><strong>Reserve after closure.</strong> When an account is terminated, the processor may hold remaining funds for months to cover late chargebacks. That's a different situation, and we cover it in <a href="/blog/processor-closed-my-account/">what to do when a processor closes your account</a>.</li>
+      </ul>
+
+      <h2>Why you got one</h2>
+      <p>Underwriters add reserves when they see risk they can't price in through rates alone. The usual reasons:</p>
+      <ul>
+        <li><strong>Your industry.</strong> Bail bonds, travel, ticketing, subscriptions, CBD, firearms and credit repair all carry higher dispute or refund risk in the eyes of processors.</li>
+        <li><strong>Future delivery.</strong> If customers pay today for something delivered weeks or months later, like trips, events or memberships, there's a long window for disputes.</li>
+        <li><strong>Limited processing history.</strong> New businesses, or businesses new to cards, have no track record to show.</li>
+        <li><strong>Past chargebacks or a closed account.</strong> Recent statements with high dispute ratios, or a prior termination, make underwriters cautious.</li>
+        <li><strong>Large average tickets or fast growth.</strong> A big ticket size or a projected volume much larger than your history increases the potential loss.</li>
+      </ul>
+
+      <h2>How to get a reserve lowered or removed</h2>
+      <p>Reserves aren't always permanent. Many agreements include a review after a set period, and even when they don't, you can ask. What helps:</p>
+      <ol>
+        <li><strong>Read your agreement first.</strong> Find the reserve percentage, hold period, any cap and any review date. Know what you agreed to before you ask for a change.</li>
+        <li><strong>Build a clean track record.</strong> Six months or more with low chargebacks and refunds is the strongest argument you have.</li>
+        <li><strong>Keep disputes down on purpose.</strong> Use a billing descriptor customers recognize, send clear receipts, make your refund policy easy to find and answer customer complaints before they turn into chargebacks.</li>
+        <li><strong>Ask for a capped reserve instead.</strong> If removal is off the table, converting a rolling reserve to a capped one often gets your deposits back to full sooner.</li>
+        <li><strong>Make the request in writing.</strong> Include your processing history, chargeback ratio and anything that's changed, like new policies or a longer operating history.</li>
+      </ol>
+      <p>If your processor won't move after a long clean stretch, it may be worth seeing what another provider that specializes in your industry would offer. Your statements are your leverage.</p>
+
+      <h2>Questions to ask before you sign</h2>
+      <ul>
+        <li>What percentage is held, and for how many days?</li>
+        <li>Is there a cap, and what is it?</li>
+        <li>When is the first review, and what do you need to see to lower it?</li>
+        <li>If the account closes, how long are funds held afterward?</li>
+      </ul>
+      <p>A good provider will answer all four in plain English and put the answers in the agreement. If the terms are vague, that's a warning sign.</p>
+      <p class="note">This post is general information about how card processing works, not legal or financial advice. Reserve terms differ by processor and agreement.</p>
+    </div>
+    <div class="post-cta">
+      <h2>Stuck with a reserve that's squeezing cash flow?</h2>
+      <p>Send us your agreement terms and recent statements. We'll tell you honestly whether your reserve looks reasonable for your industry and what your options are.</p>
+      <a class="btn pop" href="/#contact">Get a free statement review</a>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="/" style="font-size:20px">trxn<span class="p">pop</span><span class="burst" aria-hidden="true"></span></a>
+    <span>Payments and business development · trxnpop.com</span>
+    <span>© 2026 TrxnPop</span>
+  </div>
+</footer>
+
+</body>
+</html>

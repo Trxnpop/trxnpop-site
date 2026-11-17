@@ -554,6 +554,12 @@ section[id], .view { scroll-margin-top: 72px; }
         <p>Plain-English notes on payments, pricing and growth. No jargon you'll need a glossary for.</p>
       </div>
       <div class="posts reveal" id="home-posts"><!-- HOME-POSTS:START -->
+      <a class="post-card" href="/blog/what-is-a-rolling-reserve/">
+      <div class="meta"><b>High-risk merchants</b><span>Nov 17, 2026</span><span>5 min read</span></div>
+      <h3>What is a rolling reserve?</h3>
+      <p>Your processor is holding back a slice of every deposit. Here&#x27;s how a rolling reserve works, what it costs your cash flow, and what usually gets it reduced.</p>
+      <span class="more">Read the post <span aria-hidden="true">→</span></span>
+    </a>
       <a class="post-card" href="/blog/second-processor-vertical-saas/">
       <div class="meta"><b>Vertical SaaS</b><span>Nov 12, 2026</span><span>5 min read</span></div>
       <h3>Why vertical SaaS platforms lose merchants to processor shutdowns</h3>
@@ -564,12 +570,6 @@ section[id], .view { scroll-margin-top: 72px; }
       <div class="meta"><b>High-risk merchants</b><span>Nov 12, 2026</span><span>6 min read</span></div>
       <h3>Processor closed your account? What to do next</h3>
       <p>Stripe, Square or PayPal shut you down and froze your funds? Here&#x27;s what&#x27;s happening, what to do in the first 48 hours, and how to get processing again without making it worse.</p>
-      <span class="more">Read the post <span aria-hidden="true">→</span></span>
-    </a>
-      <a class="post-card" href="/blog/cash-discount-vs-surcharging/">
-      <div class="meta"><b>Pricing</b><span>Nov 12, 2026</span><span>6 min read</span></div>
-      <h3>Cash discount, dual pricing and surcharging</h3>
-      <p>Three ways to pass card fees on to customers. They sound alike, but the rules are different, and mixing them up can get you in trouble.</p>
       <span class="more">Read the post <span aria-hidden="true">→</span></span>
     </a>
       <!-- HOME-POSTS:END --></div>
@@ -627,7 +627,7 @@ section[id], .view { scroll-margin-top: 72px; }
   const pct = (n) => n.toFixed(2) + "%";
   // ---------- Blog: The Statement ----------
   // Posts now live at /blog/<slug>/. Send old #post links there.
-  const slugs = /* POST-SLUGS */["second-processor-vertical-saas", "processor-closed-my-account", "cash-discount-vs-surcharging", "effective-rate", "saas-payments-revenue"]/* /POST-SLUGS */;
+  const slugs = /* POST-SLUGS */["what-is-a-rolling-reserve", "second-processor-vertical-saas", "processor-closed-my-account", "cash-discount-vs-surcharging", "effective-rate", "saas-payments-revenue"]/* /POST-SLUGS */;
   function legacyRedirect() {
     const h = decodeURIComponent(location.hash.slice(1));
     if (h === "blog") location.replace("/blog/");
