@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- analytics:start -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TKQSQLMC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<!-- analytics:end -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TrxnPop | Payments and business development</title>
 <link rel="canonical" href="https://trxnpop.com/">
@@ -811,6 +819,7 @@ section[id], .view { scroll-margin-top: 72px; }
       });
       if (!res.ok) throw new Error("HTTP " + res.status);
       form.reset();
+      if (window.gtag) gtag("event", "generate_lead", { form_name: "contact", visitor_type: $("f-type").value });
       note("<strong>Thanks, " + name.replace(/[<>&"]/g, "") + ".</strong> Your request is in. We'll get back to you within one business day.");
     } catch (err) {
       const body = `Name: ${name}\nCompany: ${$("f-company").value}\nEmail: ${email}\nI am a: ${$("f-type").value}\n\n${$("f-msg").value}`;

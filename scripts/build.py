@@ -63,19 +63,23 @@ def shell_parts(index):
     style = re.search(r"(<style>.*?</style>)", index, re.S).group(1)
     nav = re.search(r'(<header class="nav">.*?</header>)', index, re.S).group(1)
     footer = re.search(r"(<footer>.*?</footer>)", index, re.S).group(1)
+    # Analytics tag lives once in site/index.html; blog pages reuse it.
+    m = re.search(r"(<!-- analytics:start -->.*?<!-- analytics:end -->)", index, re.S)
+    analytics = m.group(1) if m else ""
     # On blog pages, homepage anchors must point back at the homepage.
     nav = re.sub(r'href="#([a-z-]+)"', r'href="/#\1"', nav).replace('href="/#top"', 'href="/"')
     footer = footer.replace('href="#top"', 'href="/"')
-    return head_links, style, nav, footer
+    return head_links, style, nav, footer, analytics
 
 
 def page(title, description, canonical, body, parts, extra_head=""):
-    head_links, style, nav, footer = parts
+    head_links, style, nav, footer, analytics = parts
     e = html.escape
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+{analytics}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
