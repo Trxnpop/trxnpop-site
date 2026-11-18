@@ -1,0 +1,103 @@
+"""Social preview images (og:image) for trxnpop.com.
+
+Draws a 1200x630 PNG in the site's colors and fonts. build.py calls
+make_image() for the homepage and every post, so a new post gets its own
+image automatically. Needs Pillow (pip install pillow).
+Fonts in scripts/fonts/ are SIL Open Font License (see the OFL files there).
+"""
+from pathlib import Path
+
+from PIL import Image, ImageDraw, ImageFont
+
+FONTS = Path(__file__).resolve().parent / "fonts"
+W, H = 1200, 630
+PAD = 80
+PAPER = "#F3F4F1"
+CARD = "#FFFFFF"
+INK = "#0F1724"
+MUTED = "#5A6372"
+RULE = "#D9DCD6"
+POP = "#FF4A1C"
+POP_TEXT = "#C2380F"
+
+
+def display(size, weight=800):
+    f = ImageFont.truetype(str(FONTS / "Bricolage.ttf"), size)
+    f.set_variation_by_axes([min(96, max(12, size)), weight, 100])
+    return f
+
+
+def mono(size):
+    return ImageFont.truetype(str(FONTS / "IBMPlexMono-Medium.ttf"), size)
+
+
+def wrap(draw, text, font, width):
+    lines, line = [], ""
+    for word in text.split():
+        trial = f"{line} {word}".strip()
+        if draw.textlength(trial, font=font) <= width or not line:
+            line = trial
+        else:
+            lines.append(line)
+            line = word
+    if line:
+        lines.append(line)
+    return lines
+
+
+def fit_title(draw, text, width, height, sizes):
+    max_lines = 3
+    for size in sizes:
+        font = display(size)
+        lines = wrap(draw, text, font, width)
+        if len(lines) <= max_lines and len(lines) * size * 1.08 <= height:
+            return font, lines, size
+    font = display(sizes[-1])
+    lines = wrap(draw, text, font, width)[:max_lines]
+    lines[-1] = lines[-1].rstrip(".,:;") + "…"
+    return font, lines, sizes[-1]
+
+
+def logo(draw, x, y, size=46):
+    f = display(size)
+    draw.text((x, y), "trxn", font=f, fill=INK, anchor="ls")
+    x += draw.textlength("trxn", font=f)
+    draw.text((x, y), "pop", font=f, fill=POP, anchor="ls")
+    x += draw.textlength("pop", font=f) + 6
+    r = size * 0.11
+    cx, cy = x + r, y - r - 2
+    draw.ellipse((cx - r * 1.9, cy - r * 1.9, cx + r * 1.9, cy + r * 1.9), fill="#FFD3C6")
+    draw.ellipse((cx - r, cy - r, cx + r, cy + r), fill=POP)
+
+
+def make_image(out, title, eyebrow, footer="The Statement · trxnpop.com", accent_last=False):
+    img = Image.new("RGB", (W, H), PAPER)
+    d = ImageDraw.Draw(img)
+
+    # Receipt-paper card with an orange tear strip on the left.
+    d.rounded_rectangle((40, 40, W - 40, H - 40), radius=22, fill=CARD, outline=RULE, width=2)
+    d.rectangle((40, 62, 52, H - 62), fill=POP)
+
+    logo(d, PAD + 10, PAD + 52)
+    d.text((PAD + 10, PAD + 118), eyebrow.upper(), font=mono(26), fill=POP_TEXT)
+
+    font, lines, size = fit_title(d, title, W - 2 * PAD - 40, 205, [84, 76, 68, 62, 56])
+    lh = int(size * 1.08)
+    y = PAD + 178
+    for i, line in enumerate(lines):
+        if accent_last and i == len(lines) - 1 and " " in line:
+            head, last = line.rsplit(" ", 1)
+            d.text((PAD + 6, y), head + " ", font=font, fill=INK)
+            d.text((PAD + 6 + d.textlength(head + " ", font=font), y), last, font=font, fill=POP)
+        elif accent_last and i == len(lines) - 1:
+            d.text((PAD + 6, y), line, font=font, fill=POP)
+        else:
+            d.text((PAD + 6, y), line, font=font, fill=INK)
+        y += lh
+
+    d.line((PAD + 10, H - PAD - 46, W - PAD - 10, H - PAD - 46), fill=RULE, width=2)
+    d.text((PAD + 10, H - PAD - 4), footer, font=mono(24), fill=MUTED, anchor="ls")
+    d.text((W - PAD - 10, H - PAD - 4), "Free statement review →", font=mono(24), fill=POP_TEXT, anchor="rs")
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    img.save(out, "PNG", optimize=True)

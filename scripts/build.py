@@ -20,11 +20,24 @@ import re
 from datetime import date
 from pathlib import Path
 
+from og import make_image
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 POSTS_DIR = ROOT / "content" / "posts"
 BASE = "https://trxnpop.com"
 AUTHOR = "Aaron Puttmann"
+OG_DIR = SITE / "og"
+
+
+def og_tags(image_url, alt):
+    e = html.escape
+    return (f'<meta property="og:image" content="{image_url}">\n'
+            f'<meta property="og:image:width" content="1200">\n'
+            f'<meta property="og:image:height" content="630">\n'
+            f'<meta property="og:image:alt" content="{e(alt)}">\n'
+            f'<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta name="twitter:image" content="{image_url}">\n')
 
 
 def load_posts():
@@ -72,7 +85,7 @@ def shell_parts(index):
     return head_links, style, nav, footer, analytics
 
 
-def page(title, description, canonical, body, parts, extra_head=""):
+def page(title, description, canonical, body, parts, extra_head="", image=None, og_type="article"):
     head_links, style, nav, footer, analytics = parts
     e = html.escape
     return f"""<!DOCTYPE html>
@@ -84,13 +97,12 @@ def page(title, description, canonical, body, parts, extra_head=""):
 <title>{e(title)}</title>
 <meta name="description" content="{e(description)}">
 <link rel="canonical" href="{canonical}">
-<meta property="og:type" content="article">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="TrxnPop">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(description)}">
 <meta property="og:url" content="{canonical}">
-<meta name="twitter:card" content="summary">
-{extra_head}{head_links}
+{og_tags(image[0], image[1]) if image else '<meta name="twitter:card" content="summary">' + chr(10)}{extra_head}{head_links}
 {style}
 </head>
 <body>
@@ -136,7 +148,12 @@ def post_page(p, parts):
   </div>
 </article>"""
     title = p.get("seo_title") or p["title"]
-    return page(f"{title} | TrxnPop", p["description"], url, body, parts, extra)
+    image = (f"{BASE}/og/{p['slug']}.png", plain(p["h1"]))
+    return page(f"{title} | TrxnPop", p["description"], url, body, parts, extra, image)
+
+
+def plain(s):
+    return html.unescape(re.sub(r"<[^>]+>", "", s))
 
 
 def blog_index(posts, parts):
@@ -155,7 +172,20 @@ def blog_index(posts, parts):
   </div>
 </div>"""
     desc = "Plain-English notes on payments, pricing and growth for merchants, vertical SaaS companies and the people who sell to them."
-    return page("The Statement: payments blog | TrxnPop", desc, f"{BASE}/blog/", body, parts)
+    image = (f"{BASE}/og/blog.png", "The Statement: plain-English notes on payments from TrxnPop")
+    return page("The Statement: payments blog | TrxnPop", desc, f"{BASE}/blog/", body, parts, image=image, og_type="website")
+
+
+def home_og(index):
+    e = html.escape
+    title = plain(re.search(r"<title>(.*?)</title>", index, re.S).group(1))
+    desc = html.unescape(re.search(r'<meta name="description" content="(.*?)">', index, re.S).group(1))
+    return (f'<meta property="og:type" content="website">\n'
+            f'<meta property="og:site_name" content="TrxnPop">\n'
+            f'<meta property="og:title" content="{e(title)}">\n'
+            f'<meta property="og:description" content="{e(desc)}">\n'
+            f'<meta property="og:url" content="{BASE}/">\n'
+            + og_tags(f"{BASE}/og/home.png", "TrxnPop: Make every transaction pop."))
 
 
 def main():
@@ -163,6 +193,15 @@ def main():
     index = index_path.read_text()
     posts = load_posts()
     parts = shell_parts(index)
+
+    # Social preview images (1200x630) for the homepage, blog index and each post.
+    make_image(OG_DIR / "home.png", "Make every transaction pop.", "Payments and business development",
+               footer="trxnpop.com", accent_last=True)
+    make_image(OG_DIR / "blog.png", "The Statement: plain-English notes on payments.", "The TrxnPop blog")
+    for p in posts:
+        make_image(OG_DIR / f"{p['slug']}.png", plain(p["h1"]), p["tag"])
+    index = re.sub(r"<!-- og:start -->.*?<!-- og:end -->",
+                   lambda _: "<!-- og:start -->\n" + home_og(index) + "<!-- og:end -->", index, flags=re.S)
 
     for p in posts:
         out = SITE / "blog" / p["slug"] / "index.html"
