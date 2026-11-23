@@ -101,3 +101,38 @@ def make_image(out, title, eyebrow, footer="The Statement · trxnpop.com", accen
 
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out, "PNG", optimize=True)
+
+
+def make_icons(site):
+    """Favicon (SVG + 32px PNG), Apple touch icon and a 512px logo for structured data."""
+    site = Path(site)
+    (site / "favicon.svg").write_text(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
+        f'<rect width="64" height="64" rx="14" fill="{INK}"/>'
+        f'<circle cx="32" cy="32" r="13" fill="{POP}"/>'
+        f'<circle cx="32" cy="32" r="21" fill="none" stroke="{POP}" stroke-opacity=".35" stroke-width="5"/>'
+        '</svg>\n')
+    for name, size in (("favicon-32.png", 32), ("apple-touch-icon.png", 180), ("logo.png", 512)):
+        s = size * 4
+        img = Image.new("RGB", (s, s), INK)
+        d = ImageDraw.Draw(img)
+        if name == "logo.png":
+            img = Image.new("RGB", (s, s), PAPER)
+            d = ImageDraw.Draw(img)
+            font = display(int(s * 0.25))
+            t1, t2 = "trxn", "pop"
+            w1, w2 = d.textlength(t1, font=font), d.textlength(t2, font=font)
+            x = (s - w1 - w2 - s * 0.08) / 2
+            y = s / 2 - s * 0.16
+            d.text((x, y), t1, font=font, fill=INK)
+            d.text((x + w1, y), t2, font=font, fill=POP)
+            r = s * 0.035
+            cx, cy = x + w1 + w2 + s * 0.05, y + s * 0.235
+            d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=POP)
+        else:
+            c, r1, r2 = s / 2, s * 13 / 64, s * 21 / 64
+            ring = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+            ImageDraw.Draw(ring).ellipse((c - r2, c - r2, c + r2, c + r2), outline=POP + "59", width=int(s * 5 / 64))
+            img.paste(ring, (0, 0), ring)
+            d.ellipse((c - r1, c - r1, c + r1, c + r1), fill=POP)
+        img.resize((size, size), Image.LANCZOS).save(site / name, optimize=True)

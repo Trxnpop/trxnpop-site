@@ -11,20 +11,30 @@
 </script>
 <!-- analytics:end -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Statement: payments blog | TrxnPop</title>
-<meta name="description" content="Plain-English notes on payments, pricing and growth for merchants, vertical SaaS companies and the people who sell to them.">
+<title>Payments Blog: Vertical SaaS &amp; High-Risk Merchants | TrxnPop</title>
+<meta name="description" content="Plain-English guides to payment processing, embedded payments for vertical SaaS and ISVs, and high-risk merchant accounts. From TrxnPop.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <link rel="canonical" href="https://trxnpop.com/blog/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#FF4A1C">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="TrxnPop">
-<meta property="og:title" content="The Statement: payments blog | TrxnPop">
-<meta property="og:description" content="Plain-English notes on payments, pricing and growth for merchants, vertical SaaS companies and the people who sell to them.">
+<meta property="og:title" content="Payments Blog: Vertical SaaS &amp; High-Risk Merchants | TrxnPop">
+<meta property="og:description" content="Plain-English guides to payment processing, embedded payments for vertical SaaS and ISVs, and high-risk merchant accounts. From TrxnPop.">
 <meta property="og:url" content="https://trxnpop.com/blog/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="Payments Blog: Vertical SaaS &amp; High-Risk Merchants | TrxnPop">
+<meta name="twitter:description" content="Plain-English guides to payment processing, embedded payments for vertical SaaS and ISVs, and high-risk merchant accounts. From TrxnPop.">
 <meta property="og:image" content="https://trxnpop.com/og/blog.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Statement: plain-English notes on payments from TrxnPop">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://trxnpop.com/og/blog.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Blog", "@id": "https://trxnpop.com/blog/#blog", "name": "The Statement", "url": "https://trxnpop.com/blog/", "description": "Plain-English guides to payment processing, embedded payments for vertical SaaS and ISVs, and high-risk merchant accounts. From TrxnPop.", "publisher": {"@id": "https://trxnpop.com/#org"}, "inLanguage": "en-US", "blogPost": [{"@type": "BlogPosting", "headline": "Payment processing for bail bond software", "url": "https://trxnpop.com/blog/payment-processing-bail-bond-software/", "datePublished": "2026-11-19", "dateModified": "2026-11-23"}, {"@type": "BlogPosting", "headline": "What is a rolling reserve?", "url": "https://trxnpop.com/blog/what-is-a-rolling-reserve/", "datePublished": "2026-11-17", "dateModified": "2026-11-23"}, {"@type": "BlogPosting", "headline": "Why vertical SaaS platforms lose merchants to processor shutdowns", "url": "https://trxnpop.com/blog/second-processor-vertical-saas/", "datePublished": "2026-11-12", "dateModified": "2026-11-23"}, {"@type": "BlogPosting", "headline": "Processor closed your account? What to do next", "url": "https://trxnpop.com/blog/processor-closed-my-account/", "datePublished": "2026-11-12", "dateModified": "2026-11-23"}, {"@type": "BlogPosting", "headline": "Cash discount, dual pricing and surcharging", "url": "https://trxnpop.com/blog/cash-discount-vs-surcharging/", "datePublished": "2026-11-12", "dateModified": "2026-11-23"}, {"@type": "BlogPosting", "headline": "How to find your real effective rate", "url": "https://trxnpop.com/blog/effective-rate/", "datePublished": "2026-11-12", "dateModified": "2026-11-12"}, {"@type": "BlogPosting", "headline": "Your SaaS is leaving payments revenue on the table", "url": "https://trxnpop.com/blog/saas-payments-revenue/", "datePublished": "2026-11-12", "dateModified": "2026-11-23"}]}, {"@type": "Organization", "@id": "https://trxnpop.com/#org", "name": "TrxnPop", "url": "https://trxnpop.com/", "logo": {"@type": "ImageObject", "url": "https://trxnpop.com/logo.png", "width": 512, "height": 512}, "email": "hello@trxnpop.com", "description": "Payments and business development firm helping vertical SaaS platforms and ISVs earn embedded payments revenue, and helping high-risk merchants get stable processing.", "knowsAbout": ["Embedded payments", "Vertical SaaS payments", "ISV payment partnerships", "High-risk merchant accounts", "Rolling reserves", "Cash discount programs", "Credit card processing fees"], "areaServed": "US"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -282,6 +292,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wr
 .prose li + li { margin-top: .45em; }
 .prose strong { font-weight: 600; }
 .prose a { color: var(--pop-text); }
+.prose h3 { font-size: 21px; font-weight: 600; line-height: 1.3; margin-top: 1.5em; }
+.prose.faq { margin-top: 56px; }
+.crumbs { font-family: var(--font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 36px; display: flex; gap: 8px; flex-wrap: wrap; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--ink); }
+.related { margin-top: 88px; padding-top: 40px; border-top: 1px dashed var(--rule); }
+.related h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; }
+footer a { color: inherit; }
 .prose .calc-box { font-family: var(--font-mono); font-size: 15px; background: var(--card); border: 1px solid var(--rule); border-left: 4px solid var(--pop); padding: 18px 20px; border-radius: 8px; font-variant-numeric: tabular-nums; }
 .prose table { width: 100%; border-collapse: collapse; font-size: 16px; }
 .prose th, .prose td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
@@ -334,9 +352,9 @@ section[id], .view { scroll-margin-top: 72px; }
   <div class="wrap">
     <a class="back" href="/">← Back to home</a>
     <div class="blog-head">
-      <p class="eyebrow">The TrxnPop blog</p>
+      <p class="eyebrow">The TrxnPop payments blog</p>
       <h1>The <em>Statement</em>.</h1>
-      <p>Plain-English notes on payments, pricing and growth for merchants, SaaS companies and the people who sell to them.</p>
+      <p>Plain-English notes on payment processing, embedded payments and high-risk merchant accounts, for vertical SaaS teams, merchants and the people who sell to them.</p>
     </div>
     <div class="posts">
     <a class="post-card" href="/blog/payment-processing-bail-bond-software/">
@@ -389,7 +407,7 @@ section[id], .view { scroll-margin-top: 72px; }
 <footer>
   <div class="wrap">
     <a class="logo" href="/" style="font-size:20px">trxn<span class="p">pop</span><span class="burst" aria-hidden="true"></span></a>
-    <span>Payments and business development · trxnpop.com</span>
+    <span>Payments and business development · <a href="/blog/">The Statement blog</a></span>
     <span>© 2026 TrxnPop</span>
   </div>
 </footer>
