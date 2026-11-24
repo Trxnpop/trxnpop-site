@@ -1,0 +1,88 @@
+<!--
+{
+  "slug": "how-to-get-off-the-match-list",
+  "title": "How to get off the MATCH list",
+  "h1": "How to get off the MATCH list (and what to do while you're on it)",
+  "tag": "High-risk merchants",
+  "date": "2026-11-24",
+  "read": "6 min",
+  "excerpt": "Got declined and told you're on the MATCH list? Here's what it is, the only ways off it early, and how to keep taking cards in the meantime.",
+  "description": "On the MATCH list? Here's how the listing works, the only two ways to get off it early, and how to keep accepting cards while you wait it out.",
+  "seo_title": "How to Get Off the MATCH List and Keep Taking Cards",
+  "keywords": [
+    "how to get off the MATCH list",
+    "MATCH list removal",
+    "Mastercard MATCH list",
+    "terminated merchant file",
+    "MATCH list merchant account"
+  ],
+  "faq": [
+    {
+      "q": "How long do you stay on the MATCH list?",
+      "a": "Five years from the date you were added. Listings drop off after that, but a new listing during that time starts a fresh clock."
+    },
+    {
+      "q": "Can I pay someone to remove me from the MATCH list?",
+      "a": "No. Only the acquirer that added you can remove you early, and only if the listing was a mistake or you were listed for PCI noncompliance and have since become compliant. Anyone selling removal is selling something they can't deliver."
+    },
+    {
+      "q": "Can I get a merchant account while on the MATCH list?",
+      "a": "It's harder, not always impossible. Most mainstream processors will decline you, but some high-risk providers review listed merchants case by case, usually with a reserve and closer monitoring."
+    }
+  ]
+}
+-->
+<div class="prose">
+      <p>You applied for a new merchant account and got a fast no. Maybe the underwriter said it outright: you're on the MATCH list. If you're trying to figure out how to get off the MATCH list, here's the honest answer up front. Most merchants can't get off it early. But you can usually keep taking payments while you wait it out, if you go about it the right way.</p>
+      <p>Here's how the list works, the only two ways off it, and what to do in the meantime.</p>
+
+      <h2>What the MATCH list actually is</h2>
+      <p>MATCH stands for Member Alert to Control High-risk Merchants. It's a database run by Mastercard, and you'll sometimes hear it called by its old name, the Terminated Merchant File (TMF). Visa has its own version, but MATCH is the one most people mean.</p>
+      <p>When an acquirer (the bank behind your processor) closes a merchant account for certain serious reasons, it's required to add that business, and usually its owners, to MATCH. Every acquirer checks MATCH when someone new applies. That's why the listing follows you from processor to processor, even if you set up a new company.</p>
+      <p>A listing stays for <strong>five years</strong>. After that it drops off. A new listing during that window resets the clock.</p>
+
+      <h2>Why merchants get listed</h2>
+      <p>Each listing carries a reason code. The full list has 14 codes, but the ones that come up most for small and mid-size businesses are:</p>
+      <ul>
+        <li><strong>04, Excessive chargebacks.</strong> By far the most common.</li>
+        <li><strong>05, Excessive fraud.</strong> Too many fraudulent transactions over a month.</li>
+        <li><strong>10, Violation of standards.</strong> Breaking card network rules, like processing transactions the rules don't allow.</li>
+        <li><strong>12, PCI DSS noncompliance.</strong> Not meeting card data security requirements.</li>
+        <li><strong>13, Illegal transactions,</strong> and <strong>14, Identity theft</strong>, where someone opened the account using another person's identity.</li>
+      </ul>
+      <p>The others cover data breaches, money laundering, bankruptcy, fraud convictions and collusion. Your reason code matters a lot, because it decides whether early removal is even possible.</p>
+
+      <h2>The excessive chargeback test</h2>
+      <p>Code 04 isn't a judgment call. For Mastercard, a month counts as excessive when chargebacks pass 1% of that month's Mastercard sales transactions <em>and</em> total at least $5,000. Both have to happen in the same month.</p>
+      <div class="calc-box">1,500 Mastercard sales in a month, average ticket $250<br>22 chargebacks = 1.47% of transactions<br>22 × $250 = $5,500 in chargebacks<br><br>Over 1% and over $5,000 in the same month = meets the code 04 test</div>
+      <p>Meeting the test doesn't mean you're automatically listed. It's the bar an acquirer uses when it terminates you for chargebacks. This is also why a single bad month can be enough, and why processors get nervous well before you reach it. We covered the warning signs in <a href="/blog/processor-closed-my-account/">what to do when a processor closes your account</a>.</p>
+
+      <h2>How to get off the MATCH list early</h2>
+      <p>There are only two ways off before the five years are up, and both go through the acquirer that listed you.</p>
+      <ol>
+        <li><strong>The listing was a mistake.</strong> Wrong business, wrong owner, wrong reason code, or you weren't actually terminated for a listable reason. Ask the acquirer, in writing, to review it and remove it. Include whatever proves the error.</li>
+        <li><strong>You were listed for PCI noncompliance (code 12) and you're now compliant.</strong> Get your compliance documented properly and send it to the acquirer with a removal request. Some cases need sign-off from a qualified security assessor or forensic investigator, so ask the acquirer exactly what it will accept.</li>
+      </ol>
+      <p>That's it. If you were listed for excessive chargebacks, fixing the chargeback problem afterward won't get the listing removed. Paying off what you owe the old processor won't either, though it still matters, as you'll see below.</p>
+      <p>Two practical notes. First, if you don't know which acquirer listed you, ask the processor that declined you. They can usually see the listing's details even if they won't share everything. Second, be very wary of anyone offering to "clean" your MATCH record for a fee. Nobody outside the listing acquirer can do it.</p>
+
+      <h2>How to keep taking cards while you're listed</h2>
+      <p>Being on MATCH makes processing harder, not always impossible. Most mainstream processors will decline you, and payment apps like Stripe generally won't board listed merchants. Some high-risk providers will review you case by case. What helps:</p>
+      <ul>
+        <li><strong>Settle up with the old processor.</strong> An unpaid balance is often a dealbreaker on its own.</li>
+        <li><strong>Be upfront.</strong> The new underwriter will see the listing anyway. Hiding it, or applying under a new entity, makes things much worse.</li>
+        <li><strong>Show what changed.</strong> Bring recent statements, your current chargeback and refund numbers, and the specific fixes you made: clearer billing descriptors, better receipts, an easy refund policy, fraud screening.</li>
+        <li><strong>Expect tighter terms.</strong> A reserve is likely. Our guide on <a href="/blog/what-is-a-rolling-reserve/">how a rolling reserve works and how to get it lowered</a> explains what to ask for.</li>
+        <li><strong>Read the contract.</strong> Watch for long terms, early termination fees and reserves with no release date.</li>
+      </ul>
+      <p>Codes tied to fraud, laundering or identity theft by the owner are much harder to place than a code 04 listing from a business that had one rough season and fixed it.</p>
+
+      <h2>Staying off it next time</h2>
+      <p>Once you're processing again, treat your chargeback ratio like a number you check every week, not once a quarter. Respond to disputes with evidence, refund quickly when a customer has a real complaint, and talk to your processor early if a promotion or a bad batch is about to cause a spike. Processors are much more flexible with merchants who call them first.</p>
+      <p class="note">This is general information, not legal or financial advice. Card network rules change, and approval always depends on your business and the provider's underwriting.</p>
+    </div>
+    <div class="post-cta">
+      <h2>On the MATCH list or just got declined?</h2>
+      <p>Send us your recent statements and we'll give you a straight read on your options. Free statement review, or a 20-minute call if you'd rather talk it through.</p>
+      <a class="btn pop" href="/#contact">Get a free statement review</a>
+    </div>
