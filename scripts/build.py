@@ -47,7 +47,7 @@ ORG = {
     "name": "TrxnPop",
     "alternateName": ["Trxnpop", "trxnpop", "Trxn Pop", "trxnpop.com"],
     "url": f"{BASE}/",
-    "logo": {"@type": "ImageObject", "url": LOGO, "width": 512, "height": 512},
+    "logo": {"@type": "ImageObject", "url": LOGO, "width": 1200, "height": 1200},
     "email": "hello@trxnpop.com",
     "description": ("Payments and business development firm helping vertical SaaS platforms and ISVs earn "
                     "embedded payments revenue, and helping high-risk merchants get stable processing."),

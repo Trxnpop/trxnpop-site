@@ -104,7 +104,7 @@ def make_image(out, title, eyebrow, footer="The Statement · trxnpop.com", accen
 
 
 def make_icons(site):
-    """Favicon (SVG, ICO, 32/48/192px PNG), Apple touch icon and a 512px logo for structured data.
+    """Favicon (SVG, ICO, 32/48/192px PNG), Apple touch icon and a 1200px logo for structured data.
 
     Google Search shows a site favicon only if it is square and a multiple of 48px, so the
     48px and 192px PNGs are the ones search results use; favicon.ico covers crawlers that
@@ -117,22 +117,25 @@ def make_icons(site):
         f'<circle cx="32" cy="32" r="21" fill="none" stroke="{POP}" stroke-opacity=".35" stroke-width="5"/>'
         '</svg>\n')
     for name, size in (("favicon-32.png", 32), ("favicon-48.png", 48), ("favicon-192.png", 192),
-                       ("apple-touch-icon.png", 180), ("logo.png", 512)):
+                       ("apple-touch-icon.png", 180), ("logo.png", 1200)):
         s = size * 4
         img = Image.new("RGB", (s, s), INK)
         d = ImageDraw.Draw(img)
         if name == "logo.png":
+            # Wordmark with clear margins on every side, so square crops (Google, LinkedIn) keep the dot.
             img = Image.new("RGB", (s, s), PAPER)
             d = ImageDraw.Draw(img)
-            font = display(int(s * 0.25))
+            font = display(int(s * 0.19))
             t1, t2 = "trxn", "pop"
             w1, w2 = d.textlength(t1, font=font), d.textlength(t2, font=font)
-            x = (s - w1 - w2 - s * 0.08) / 2
-            y = s / 2 - s * 0.16
+            r = s * 0.027
+            x = (s - (w1 + w2 + s * 0.02 + 2 * r)) / 2
+            bb = d.textbbox((0, 0), t1 + t2, font=font)
+            y = (s - (bb[3] - bb[1])) / 2 - bb[1]
             d.text((x, y), t1, font=font, fill=INK)
             d.text((x + w1, y), t2, font=font, fill=POP)
-            r = s * 0.035
-            cx, cy = x + w1 + w2 + s * 0.05, y + s * 0.235
+            base = d.textbbox((0, 0), t1, font=font)[3]  # baseline: 'trxn' has no descenders
+            cx, cy = x + w1 + w2 + s * 0.02 + r, y + base - r
             d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=POP)
         else:
             c, r1, r2 = s / 2, s * 13 / 64, s * 21 / 64
