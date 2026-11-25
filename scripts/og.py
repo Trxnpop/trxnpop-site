@@ -104,7 +104,11 @@ def make_image(out, title, eyebrow, footer="The Statement · trxnpop.com", accen
 
 
 def make_icons(site):
-    """Favicon (SVG + 32px PNG), Apple touch icon and a 512px logo for structured data."""
+    """Favicon (SVG, ICO, 32/48/192px PNG), Apple touch icon and a 512px logo for structured data.
+
+    Google Search shows a site favicon only if it is square and a multiple of 48px, so the
+    48px and 192px PNGs are the ones search results use; favicon.ico covers crawlers that
+    only look at /favicon.ico."""
     site = Path(site)
     (site / "favicon.svg").write_text(
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
@@ -112,7 +116,8 @@ def make_icons(site):
         f'<circle cx="32" cy="32" r="13" fill="{POP}"/>'
         f'<circle cx="32" cy="32" r="21" fill="none" stroke="{POP}" stroke-opacity=".35" stroke-width="5"/>'
         '</svg>\n')
-    for name, size in (("favicon-32.png", 32), ("apple-touch-icon.png", 180), ("logo.png", 512)):
+    for name, size in (("favicon-32.png", 32), ("favicon-48.png", 48), ("favicon-192.png", 192),
+                       ("apple-touch-icon.png", 180), ("logo.png", 512)):
         s = size * 4
         img = Image.new("RGB", (s, s), INK)
         d = ImageDraw.Draw(img)
@@ -136,3 +141,5 @@ def make_icons(site):
             img.paste(ring, (0, 0), ring)
             d.ellipse((c - r1, c - r1, c + r1, c + r1), fill=POP)
         img.resize((size, size), Image.LANCZOS).save(site / name, optimize=True)
+        if name == "favicon-192.png":
+            img.save(site / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
