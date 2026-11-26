@@ -1,0 +1,86 @@
+<!--
+{
+  "slug": "chargeback-ratio-limits",
+  "title": "Chargeback ratio limits: Visa and Mastercard",
+  "h1": "Chargeback ratio limits: how Visa and Mastercard measure you, and where processors draw the line",
+  "tag": "High-risk merchants",
+  "date": "2026-12-01",
+  "read": "6 min",
+  "excerpt": "Visa and Mastercard both use a 1.5% line, but they count very different things. Here's how each ratio works, and why your processor probably cares long before you get there.",
+  "description": "What are the chargeback ratio limits for Visa and Mastercard? How each brand counts disputes, the 1.5% thresholds, and why processors act sooner.",
+  "seo_title": "Chargeback Ratio Limits: Visa and Mastercard Thresholds",
+  "keywords": [
+    "chargeback ratio limits",
+    "chargeback threshold",
+    "Visa VAMP threshold",
+    "Mastercard excessive chargeback program",
+    "high-risk merchant account"
+  ],
+  "faq": [
+    {
+      "q": "What is an acceptable chargeback ratio?",
+      "a": "Card brand programs kick in around 1.5%, but many processors start asking questions closer to 0.5% to 1%. Staying well under 1% month after month is the safest target."
+    },
+    {
+      "q": "Do refunds count toward my chargeback ratio?",
+      "a": "No. A refund you issue before the customer disputes the charge is not a chargeback. But refunding after a dispute has been filed, or winning the dispute, usually doesn't remove it from the count."
+    },
+    {
+      "q": "Do Visa fraud reports count even if there's no chargeback?",
+      "a": "Yes. Under Visa's VAMP program, issuer fraud reports count alongside disputes, and one fraudulent order that is also disputed can count twice."
+    }
+  ]
+}
+-->
+<div class="prose">
+      <p>If you run a high-risk business, your chargeback ratio is the number that decides whether you keep your merchant account. Go over the limit and you can face monthly fines, a reserve, or a closed account.</p>
+      <p>The tricky part is that there isn't one chargeback ratio limit. Visa and Mastercard each measure you differently, and your processor has its own line that is usually stricter than either. Here's how each one works in plain English.</p>
+
+      <h2>What a chargeback ratio is</h2>
+      <p>A chargeback ratio compares the disputes you receive to the number of transactions you process. It is based on counts, not dollars. Ten disputes on $50 orders and ten disputes on $5,000 orders weigh the same.</p>
+      <p>That matters because a business with a small number of large tickets (bail premiums, travel packages, firearms) can move its ratio a lot with just a handful of disputes.</p>
+
+      <h2>Visa: the VAMP ratio</h2>
+      <p>In 2025 Visa replaced its older dispute and fraud monitoring programs with one program, the Visa Acquirer Monitoring Program (VAMP). A few things are different from what most merchants were used to:</p>
+      <ul>
+        <li><strong>Fraud reports count, not just disputes.</strong> The VAMP ratio adds up issuer fraud reports (the "TC40" reports banks file when a cardholder says a charge was fraud) and disputes, then divides by your settled card-not-present transactions for the month.</li>
+        <li><strong>One bad order can count twice.</strong> A fraudulent order that gets reported as fraud and then disputed is two events, not one.</li>
+        <li><strong>Winning doesn't erase it.</strong> A dispute you win, or refund after it's filed, still counts. Only certain disputes resolved through Visa-approved pre-dispute tools are left out, and the rules on which ones qualify are detailed enough that you should confirm them with your processor.</li>
+      </ul>
+      <p>For merchants in the US and most other regions, the "Excessive" line has been a VAMP ratio of 1.5% since April 2026, with a minimum of 1,500 fraud reports plus disputes in the month. Merchants identified as excessive face per-dispute fees that their acquirer usually passes along.</p>
+      <p>Visa also measures the acquirers themselves, at much lower ratios. That's why your processor may start watching your numbers at well under 1.5%.</p>
+
+      <h2>Mastercard: the Excessive Chargeback Program</h2>
+      <p>Mastercard's program counts chargebacks only, and it uses a lag: chargebacks received this month divided by transactions from the previous month.</p>
+      <ul>
+        <li><strong>Excessive Chargeback Merchant:</strong> a ratio of 1.5% or more and at least 100 chargebacks in the month.</li>
+        <li><strong>High Excessive Chargeback Merchant:</strong> a ratio of 3% or more and at least 300 chargebacks.</li>
+      </ul>
+      <p>Both conditions have to be met. Fines start in the second month in the program and climb the longer you stay, reaching $25,000 a month or more for long-running cases at the lower tier. To exit, you need three months in a row below the thresholds.</p>
+
+      <h2>A quick example</h2>
+      <p>Here's how the same small business can look under each program. Say an online merchant processes about 2,000 card-not-present Visa transactions and 2,000 Mastercard transactions a month.</p>
+      <div class="calc-box">Mastercard: 30 chargebacks this month ÷ 2,000 transactions last month = 1.5%<br>But 30 is under the 100-chargeback minimum, so no program<br><br>Visa: 18 disputes + 14 fraud reports = 32 events<br>32 ÷ 2,000 settled transactions = 1.6%<br>Over 1.5%, but far under the 1,500-event minimum<br><br>Your processor: sees a 1.5%+ ratio either way</div>
+      <p>The minimums mean many smaller merchants never formally land in a card brand program. That doesn't make a 1.5% ratio safe. Processors carry the risk and the brand pressure on their whole portfolio, so they usually act on the ratio itself, long before you'd hit 100 or 1,500 events.</p>
+
+      <h2>Where processors actually draw the line</h2>
+      <p>Your merchant agreement almost always lets the processor set its own limits, and those are what close most accounts. Many providers start reviewing merchants somewhere around 0.5% to 1%, especially in industries they already treat as high risk. A review can mean a new <a href="/blog/what-is-a-rolling-reserve/">rolling reserve</a>, delayed payouts, or a request for a written plan to bring disputes down.</p>
+      <p>If the numbers keep climbing, the next step is often termination, and a terminated account for excessive chargebacks is one of the reasons a business can end up on the MATCH list (here's <a href="/blog/how-to-get-off-the-match-list/">how the MATCH list works</a>). If your account has already been shut down, see <a href="/blog/processor-closed-my-account/">what to do when a processor closes your account</a>.</p>
+
+      <h2>How to keep your ratio down</h2>
+      <ul>
+        <li><strong>Make the charge recognizable.</strong> A billing descriptor with the name customers know you by, plus a phone number, stops a lot of "I don't recognize this" disputes.</li>
+        <li><strong>Refund early.</strong> If a customer is unhappy and asking, a refund before they call their bank keeps it out of the count. After a dispute is filed, it's usually too late.</li>
+        <li><strong>Remind before recurring charges.</strong> Subscriptions and payment plans should send a notice before each charge and make cancelling easy.</li>
+        <li><strong>Stop fraud before capture.</strong> Under VAMP, fraud reports count, so address checks, 3-D Secure on risky orders and declining obvious mismatches protect your ratio as well as your revenue.</li>
+        <li><strong>Ask about pre-dispute alerts.</strong> Some tools let you refund a disputed charge before it becomes a chargeback. Ask your processor which ones they support and how they're counted.</li>
+        <li><strong>Watch it monthly.</strong> Track disputes and fraud reports per brand, per month, the way the networks do. Don't wait for your processor to tell you.</li>
+      </ul>
+      <p>If your ratio is already high, a written plan with dates and specific fixes is the strongest thing you can bring to your processor, or to the next one.</p>
+      <p class="note">This post is general information about card network programs, not legal or financial advice. Thresholds, fees and exclusions change and can vary by region and by processor, so confirm the current rules with your provider. The example uses illustrative numbers.</p>
+    </div>
+    <div class="post-cta">
+      <h2>Worried about your chargeback ratio?</h2>
+      <p>Send us your recent statements. We'll show you where your ratio really stands with each card brand and what usually brings it down, before your processor asks.</p>
+      <a class="btn pop" href="/#contact">Get a free statement review</a>
+    </div>
