@@ -33,7 +33,10 @@ LOGO = f"{BASE}/logo.png"
 # Titles longer than this skip the " | TrxnPop" suffix so Google doesn't cut them off.
 TITLE_MAX = 62
 
-ICONS = ('<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+ICONS = ('<link rel="icon" href="/favicon.ico" sizes="48x48">\n'
+         '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+         '<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">\n'
+         '<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">\n'
          '<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">\n'
          '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
          '<meta name="theme-color" content="#FF4A1C">\n')
@@ -42,8 +45,9 @@ ORG = {
     "@type": "Organization",
     "@id": f"{BASE}/#org",
     "name": "TrxnPop",
+    "alternateName": ["Trxnpop", "trxnpop", "Trxn Pop", "trxnpop.com"],
     "url": f"{BASE}/",
-    "logo": {"@type": "ImageObject", "url": LOGO, "width": 512, "height": 512},
+    "logo": {"@type": "ImageObject", "url": LOGO, "width": 1200, "height": 1200},
     "email": "hello@trxnpop.com",
     "description": ("Payments and business development firm helping vertical SaaS platforms and ISVs earn "
                     "embedded payments revenue, and helping high-risk merchants get stable processing."),
@@ -309,7 +313,8 @@ def home_og(index):
             + ICONS
             + ld({"@context": "https://schema.org", "@graph": [
                 ORG,
-                {"@type": "WebSite", "@id": f"{BASE}/#website", "name": "TrxnPop", "url": f"{BASE}/",
+                {"@type": "WebSite", "@id": f"{BASE}/#website", "name": "TrxnPop",
+                 "alternateName": ["Trxnpop", "trxnpop.com"], "url": f"{BASE}/",
                  "publisher": {"@id": f"{BASE}/#org"}, "inLanguage": "en-US"},
                 {"@type": "ProfessionalService", "@id": f"{BASE}/#service", "name": "TrxnPop",
                  "url": f"{BASE}/", "image": f"{BASE}/og/home.png", "email": "hello@trxnpop.com",
