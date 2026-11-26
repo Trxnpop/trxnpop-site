@@ -598,16 +598,16 @@ section[id], .view { scroll-margin-top: 72px; }
       <p>Visa and Mastercard both use a 1.5% line, but they count very different things. Here&#x27;s how each ratio works, and why your processor probably cares long before you get there.</p>
       <span class="more">Read the post <span aria-hidden="true">→</span></span>
     </a>
+      <a class="post-card" href="/blog/isv-payments-revenue-share/">
+      <div class="meta"><b>Vertical SaaS</b><span>Nov 26, 2026</span><span>6 min read</span></div>
+      <h3>ISV payments revenue share: how residual splits really work</h3>
+      <p>A 60% split sounds better than 25 basis points, until you see what gets taken out first. Here&#x27;s how ISV payments revenue share is actually calculated.</p>
+      <span class="more">Read the post <span aria-hidden="true">→</span></span>
+    </a>
       <a class="post-card" href="/blog/how-to-get-off-the-match-list/">
       <div class="meta"><b>High-risk merchants</b><span>Nov 24, 2026</span><span>6 min read</span></div>
       <h3>How to get off the MATCH list</h3>
       <p>Got declined and told you&#x27;re on the MATCH list? Here&#x27;s what it is, the only ways off it early, and how to keep taking cards in the meantime.</p>
-      <span class="more">Read the post <span aria-hidden="true">→</span></span>
-    </a>
-      <a class="post-card" href="/blog/payment-processing-bail-bond-software/">
-      <div class="meta"><b>Vertical SaaS</b><span>Nov 19, 2026</span><span>5 min read</span></div>
-      <h3>Payment processing for bail bond software</h3>
-      <p>Bail agencies need to take cards, but many mainstream processors won&#x27;t board them. Here&#x27;s how bail bond software can offer payments without fighting underwriting every week.</p>
       <span class="more">Read the post <span aria-hidden="true">→</span></span>
     </a>
       <!-- HOME-POSTS:END --></div>
@@ -665,7 +665,7 @@ section[id], .view { scroll-margin-top: 72px; }
   const pct = (n) => n.toFixed(2) + "%";
   // ---------- Blog: The Statement ----------
   // Posts now live at /blog/<slug>/. Send old #post links there.
-  const slugs = /* POST-SLUGS */["chargeback-ratio-limits", "how-to-get-off-the-match-list", "payment-processing-bail-bond-software", "what-is-a-rolling-reserve", "second-processor-vertical-saas", "processor-closed-my-account", "cash-discount-vs-surcharging", "effective-rate", "saas-payments-revenue"]/* /POST-SLUGS */;
+  const slugs = /* POST-SLUGS */["chargeback-ratio-limits", "isv-payments-revenue-share", "how-to-get-off-the-match-list", "payment-processing-bail-bond-software", "what-is-a-rolling-reserve", "second-processor-vertical-saas", "processor-closed-my-account", "cash-discount-vs-surcharging", "effective-rate", "saas-payments-revenue"]/* /POST-SLUGS */;
   function legacyRedirect() {
     const h = decodeURIComponent(location.hash.slice(1));
     if (h === "blog") location.replace("/blog/");
