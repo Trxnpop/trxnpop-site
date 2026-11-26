@@ -1,0 +1,96 @@
+<!--
+{
+  "slug": "isv-payments-revenue-share",
+  "title": "ISV payments revenue share: how residual splits really work",
+  "h1": "ISV payments revenue share: how residual splits really work",
+  "tag": "Vertical SaaS",
+  "date": "2026-11-26",
+  "read": "6 min",
+  "excerpt": "A 60% split sounds better than 25 basis points, until you see what gets taken out first. Here's how ISV payments revenue share is actually calculated.",
+  "description": "How ISV payments revenue share is calculated: net vs gross splits, buy rates, what gets deducted first, and the contract terms that decide what you earn.",
+  "seo_title": "ISV Payments Revenue Share: How Residual Splits Work",
+  "keywords": [
+    "ISV payments revenue share",
+    "payment processing residuals",
+    "residual split",
+    "buy rate",
+    "embedded payments revenue"
+  ],
+  "faq": [
+    {
+      "q": "What is a typical revenue share for an ISV?",
+      "a": "It varies a lot. Splits of net revenue quoted publicly run from roughly a third to the large majority, and some partners quote basis points on gross volume instead. Newer platforms with little volume usually start at the low end."
+    },
+    {
+      "q": "Is a percentage of net revenue better than basis points on gross volume?",
+      "a": "Not automatically. A net split pays more when your merchants' pricing has a healthy markup, while basis points on gross is simpler and doesn't shrink if pricing gets cut. You have to run your own numbers both ways."
+    },
+    {
+      "q": "What is a buy rate in payments?",
+      "a": "It's the processor's cost to you, usually listed on a Schedule A. Anything your merchants pay above the buy rate is the margin that gets split."
+    }
+  ]
+}
+-->
+<div class="prose">
+      <p>If you run a vertical software company, sooner or later a payments partner will hand you a revenue share offer. One says "60% of net." Another says "25 basis points." A third says "up to 80%." They all sound good, and they're almost impossible to compare at a glance.</p>
+      <p>This guide walks through how ISV payments revenue share is actually calculated, what gets subtracted before you see a dollar, and the contract terms that matter more than the headline number.</p>
+
+      <h2>The two ways revenue share gets quoted</h2>
+      <p>Almost every offer is one of these:</p>
+      <ul>
+        <li><strong>Basis points on gross volume.</strong> You earn a fixed slice of everything your merchants process. 25 bps on $1 million is $2,500. Simple, predictable and easy to check.</li>
+        <li><strong>A percentage of net revenue.</strong> You earn a share of the margin left after costs. This is the classic "residual split," and it's where most of the confusion lives, because "net" depends on what gets taken out first.</li>
+      </ul>
+      <p>Neither is better by default. A net split can pay far more on well-priced merchants. Basis points on gross can be safer if you expect pricing pressure. You have to model both on your own numbers.</p>
+
+      <h2>How a net residual is calculated</h2>
+      <p>Start with what the merchant pays. On interchange-plus pricing, that's the card brands' costs (interchange, plus dues and assessments) passed straight through, plus a markup, say 0.50% and $0.10 per transaction.</p>
+      <p>Interchange is not revenue for anyone in your deal. It goes to the card-issuing banks, so it drops out of the math entirely. What's left is the markup.</p>
+      <p>From the markup, the processor subtracts its own cost to serve you. That cost is your <strong>buy rate</strong>, usually listed on a document called a Schedule A: a small percentage, a per-transaction fee and often a monthly fee per merchant. What remains is net revenue, and that's what gets split.</p>
+      <div class="calc-box">$5,000,000 a month in volume, 50,000 transactions<br><br>Markup: 0.50% + $0.10 = $25,000 + $5,000 = $30,000<br>Buy rate: 0.10% + $0.05 = $5,000 + $2,500 = $7,500<br>Net revenue = $22,500<br><br>60% of net = $13,500 a month<br>30% of net = $6,750 a month<br>25 bps on gross = $12,500 a month</div>
+      <p>Same volume, three offers, and the gap between them is almost $7,000 a month. Notice too that the 60% offer only wins because the merchants carry a healthy markup. Cut the markup in half to win a competitive deal and that split pays a lot less, while basis points on gross wouldn't move.</p>
+
+      <h2>What gets subtracted before the split</h2>
+      <p>The buy rate is the obvious cost. The less obvious ones are where offers quietly get worse. Ask for a full Schedule A and look for:</p>
+      <ul>
+        <li><strong>Per-merchant monthly fees</strong> for things like gateway access, statements, PCI programs or account maintenance.</li>
+        <li><strong>Batch, payout and ACH fees</strong> charged every time a merchant gets funded.</li>
+        <li><strong>Chargeback and retrieval fees.</strong> Find out whether they come out of your residual or get billed to the merchant.</li>
+        <li><strong>Merchant losses.</strong> If a merchant runs up chargebacks and disappears, some agreements make the software partner share the loss. That's a big deal if you serve higher-risk industries.</li>
+        <li><strong>Monthly minimums</strong> on your total residual or per merchant, below which you're paid nothing.</li>
+      </ul>
+      <p>A 70% split with five deductions can easily pay less than a 50% split with none.</p>
+
+      <h2>The contract terms that matter more than the split</h2>
+      <p>The percentage gets the attention. These terms decide whether the income actually lasts:</p>
+      <ul>
+        <li><strong>Who sets merchant pricing.</strong> If the processor can lower a merchant's rate to keep them, your net residual shrinks without your say.</li>
+        <li><strong>Ownership and portability.</strong> If you part ways, do your residuals keep paying on merchants you already boarded? Can you move those merchants? Get it in writing.</li>
+        <li><strong>Vesting and termination.</strong> Some agreements stop residuals if you're terminated, or only vest them after a set period.</li>
+        <li><strong>Reporting.</strong> You want merchant-level reports every month, with volume, transactions, pricing and costs, so you can check the math yourself.</li>
+        <li><strong>Tiers.</strong> If the split rises with volume, know the thresholds and whether the higher rate applies to all volume or only the volume above the line.</li>
+        <li><strong>Term and exit.</strong> Contract length, auto-renewal and early termination costs.</li>
+      </ul>
+
+      <h2>What actually grows the number</h2>
+      <p>Negotiating the split matters, but adoption usually matters more. A great revenue share on 15% of your merchants loses to an average one on 60%. That comes from making payments the easy default inside your product, which we cover in <a href="/blog/saas-payments-revenue/">how SaaS companies make money from embedded payments</a>.</p>
+      <p>The other lever is keeping merchants approved. Every merchant your processor declines or shuts down takes its residual with it. Adding <a href="/blog/second-processor-vertical-saas/">a second approval path</a> for those merchants turns lost volume back into revenue without touching the ones who are doing fine.</p>
+
+      <h2>A quick checklist for any offer</h2>
+      <ul>
+        <li>Is the share on gross volume or net revenue, and how is "net" defined?</li>
+        <li>Can I see the full Schedule A, every fee included?</li>
+        <li>Who pays for chargebacks and merchant losses?</li>
+        <li>Who controls merchant pricing?</li>
+        <li>What happens to my residuals if we part ways?</li>
+        <li>Will I get merchant-level reporting every month?</li>
+      </ul>
+      <p>If a partner can answer all six clearly, you can compare offers on equal footing. If they can't, that tells you something too.</p>
+      <p class="note">This post is general information about payments partnerships, not legal or financial advice. Figures are an illustrative example, not a forecast or a quote. Actual terms depend on your platform, your merchants and the partner you choose.</p>
+    </div>
+    <div class="post-cta">
+      <h2>Comparing revenue share offers?</h2>
+      <p>Send us the offers you have and we'll lay them side by side on your real volume. Or book a 20-minute call and we'll walk through what a fair split looks like for your platform.</p>
+      <a class="btn pop" href="/#contact">Book a 20-minute call</a>
+    </div>
